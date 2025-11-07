@@ -14,7 +14,7 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 - Primer componente: formulario de login con estructura adaptada desde HTML original y separación CSS.
 - Se logró centrar el login y aplicar color de fondo global correctamente.
 
-### 07/11/2025 (mañana)
+### 07/11/2025 
 
 - Configuración de internacionalización con react-i18next.
 - Creación de estructura y archivos de idioma (`/src/locales/es.json`, `/src/locales/en.json`).

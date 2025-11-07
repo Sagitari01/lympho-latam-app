@@ -1,0 +1,10 @@
+{
+  "login": {
+    "title": "Iniciar Sesión",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "enter": "Entrar",
+    "forgot": "¿Olvidaste tu contraseña?",
+    "success": "¡Inicio de sesión exitoso!"
+  }
+}

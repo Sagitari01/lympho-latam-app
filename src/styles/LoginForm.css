@@ -4,10 +4,20 @@ html, body, #root {
   padding: 0;
 }
 
+/* --- SECCIÓN MODIFICADA --- */
 .login-bg {
   height: 100vh;
   width: 100vw;
-  background: #f5f7fa;
+  
+  /* 👇 CAMBIO: Tono de gris más oscuro que el original #f5f7fa */
+  background-color: #e9ebee; 
+
+  /* 👇 CAMBIO: Gradiente sutil para dar profundidad */
+  background-image: linear-gradient(
+    rgba(0, 0, 0, 0.06), 
+    rgba(0, 0, 0, 0.01)
+  );
+  
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,12 +30,17 @@ html, body, #root {
   padding: 24px;
   background: #fff;
   border-radius: 12px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  
+  /* 👇 CAMBIO: Sombra un poco más pronunciada para "flotar" más */
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.1); 
+  
   display: flex;
   flex-direction: column;
   justify-content: center;
   box-sizing: border-box;
 }
+/* --- FIN DE SECCIÓN MODIFICADA --- */
+
 
 .logo-container {
   text-align: center;
@@ -33,6 +48,7 @@ html, body, #root {
 }
 
 .logo-placeholder {
+  /* Este era el estilo para el SVG, puedes borrarlo si ya no lo usas */
   width: 40px;
   height: 40px;
   margin: 0 auto;
@@ -145,4 +161,13 @@ input[type="password"]:focus {
   border-radius: 4px;
   padding: 5px 12px;
   cursor: pointer;
+}
+
+
+/* --- SECCIÓN AÑADIDA --- */
+/* 👇 Estilos para el nuevo logo (<img>) en LoginForm.jsx */
+.login-logo {
+  max-width: 180px; /* Ajusta este tamaño como prefieras */
+  height: auto;
+  /* text-align: center en .logo-container ya lo centra horizontalmente */
 }

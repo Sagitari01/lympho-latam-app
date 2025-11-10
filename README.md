@@ -29,6 +29,12 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 - Se refactorizó `LoginForm.jsx` para capturar credenciales y usar la función `signIn` de Amplify, incluyendo manejo de estado de carga y errores de Cognito.
 - Se actualizó `App.jsx` para crear un **sistema de rutas protegidas**, usando `getCurrentUser` para verificar la sesión al cargar la app.
 - Se implementó la función de `signOut` (Cerrar sesión) en el componente `Bienvenida.jsx`.
+- **Mejoras de UI/UX en el Login:**
+    - Se reemplazó el logo temporal por el logo oficial (`LOGOBajadaNEGRO.png`).
+    - Se ajustó el CSS del fondo para mejorar el contraste visual.
+    - Se añadió el favicon del proyecto (`ICONONEGRO.png`) a la pestaña del navegador.
+    - Se implementaron títulos de página dinámicos que cambian con el idioma (`react-i18next`).
+    - Se completaron las traducciones (EN/ES) para los mensajes de error y se cambió el idioma por defecto a inglés.
 
 ### Próximos pasos
 

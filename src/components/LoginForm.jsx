@@ -1,10 +1,8 @@
 // components/LoginForm.jsx
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/LoginForm.css";
-
-// 👇 CAMBIO 1: Importamos 'signIn' desde el nuevo paquete
-import { signIn } from '@aws-amplify/auth'; 
+import { signIn } from '@aws-amplify/auth';
 
 export default function LoginForm({ onLoginSuccess }) {
   const { t, i18n } = useTranslation();
@@ -12,6 +10,10 @@ export default function LoginForm({ onLoginSuccess }) {
   const [password, setPassword] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState(null);
+
+  useEffect(() => {
+    document.title = t('app.titleLogin');
+  }, [i18n.language, t]);
 
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
@@ -25,18 +27,14 @@ export default function LoginForm({ onLoginSuccess }) {
     setError(null);
 
     try {
-      // 👇 CAMBIO 2: Así se llama a signIn en v6
       const { isSignedIn, nextStep } = await signIn({
-        username: email, // En Cognito, "username" es el email
+        username: email,
         password: password,
       });
 
-      // ¡Éxito! (Asumimos que el login es completo)
-      // 'isSignedIn' te dirá si el login fue exitoso.
       if (isSignedIn) {
-        onLoginSuccess(); // Avisamos a App.jsx
+        onLoginSuccess();
       } else {
-        // Esto puede pasar si tienes Multi-Factor Authentication (MFA)
         console.log('El siguiente paso es:', nextStep);
         setError("Se requiere un paso adicional (MFA).");
       }
@@ -44,15 +42,12 @@ export default function LoginForm({ onLoginSuccess }) {
     } catch (err) {
       setIsLoading(false);
       console.error('Error al iniciar sesión:', err);
-      // v6 manda errores más específicos. ej: err.name
       if (err.name === 'UserNotFoundException' || err.name === 'NotAuthorizedException') {
-        setError('Correo o contraseña incorrectos.');
+        setError(t('login.errorInvalidCredentials') || 'Correo o contraseña incorrectos.');
       } else {
-        setError(err.message || 'Error de autenticación');
+        setError(err.message || t('login.errorAuthGeneric') || 'Error de autenticación');
       }
     }
-    // NOTA: En un login exitoso, isLoading se pondrá en false
-    // cuando App.jsx cambie el componente
   };
 
   return (
@@ -62,9 +57,15 @@ export default function LoginForm({ onLoginSuccess }) {
         <button onClick={() => handleLanguageChange('en')}>EN</button>
       </div>
       <div className="login-container">
-        {/* ... (Todo tu SVG y HTML se mantiene igual) ... */}
+        <div className="logo-container">
+          <img
+            src="/images/LOGOBajadaNEGRO.png"
+            alt="Lympho Latam Logo"
+            className="login-logo"
+          />
+        </div>
         <h1 className="form-title">{t('login.title')}</h1>
-        
+
         <form onSubmit={handleSubmit}>
           <div className="form-group">
             <label htmlFor="email">{t('login.email')}</label>
@@ -97,7 +98,9 @@ export default function LoginForm({ onLoginSuccess }) {
             {isLoading ? t('login.loading') : t('login.enter')}
           </button>
         </form>
-        {/* ... (Tu link de 'forgot-password' se mantiene igual) ... */}
+        <div className="forgot-password">
+          <a href="#" onClick={e => e.preventDefault()}>{t('login.forgot')}</a>
+        </div>
       </div>
     </div>
   );

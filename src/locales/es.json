@@ -1,4 +1,7 @@
 {
+  "app": {
+    "titleLogin": "Inicio de Sesión"
+  },
   "login": {
     "title": "Iniciar Sesión",
     "email": "Correo electrónico",
@@ -6,6 +9,9 @@
     "enter": "Entrar",
     "forgot": "¿Olvidaste tu contraseña?",
     "success": "¡Inicio de sesión exitoso!",
-    "loading": "Cargando..." 
+    "loading": "Cargando...",
+
+    "errorInvalidCredentials": "Correo o contraseña incorrectos.",
+    "errorAuthGeneric": "Error de autenticación. Por favor, inténtalo de nuevo."
   }
 }

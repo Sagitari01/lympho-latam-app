@@ -1,4 +1,7 @@
 {
+  "app": {
+    "titleLogin": "Login"
+  },
   "login": {
     "title": "Sign In",
     "email": "Email",
@@ -6,6 +9,9 @@
     "enter": "Enter",
     "forgot": "Forgot your password?",
     "success": "Logged in successfully!",
-    "loading": "Loading..." 
+    "loading": "Loading...",
+    
+    "errorInvalidCredentials": "Incorrect email or password.",
+    "errorAuthGeneric": "Authentication error. Please try again."
   }
 }

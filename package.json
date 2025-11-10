@@ -10,10 +10,13 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@aws-amplify/auth": "^6.17.0",
+    "aws-amplify": "^6.15.8",
     "i18next": "^25.6.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-i18next": "^16.2.4"
+    "react-i18next": "^16.2.4",
+    "react-router-dom": "^7.9.5"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",

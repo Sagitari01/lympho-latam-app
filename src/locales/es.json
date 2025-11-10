@@ -5,6 +5,7 @@
     "password": "Contraseña",
     "enter": "Entrar",
     "forgot": "¿Olvidaste tu contraseña?",
-    "success": "¡Inicio de sesión exitoso!"
+    "success": "¡Inicio de sesión exitoso!",
+    "loading": "Cargando..." 
   }
 }

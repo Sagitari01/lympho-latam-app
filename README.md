@@ -14,17 +14,26 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 - Primer componente: formulario de login con estructura adaptada desde HTML original y separación CSS.
 - Se logró centrar el login y aplicar color de fondo global correctamente.
 
-### 07/11/2025 (mañana)
+### 07/11/2025 
 
 - Configuración de internacionalización con react-i18next.
 - Creación de estructura y archivos de idioma (`/src/locales/es.json`, `/src/locales/en.json`).
 - Implementación de switch de idioma ES/EN en el frontend.
 - Manual de instalación y pruebas de interface translanguaging.
 
+### 10/11/2025
+
+- **Integración de Autenticación con AWS Cognito (Amplify v6).**
+- Se descartó el flujo OIDC (con redirección) para implementar un **flujo de autenticación directo** (sin salir de la página) usando AWS Amplify.
+- Se instalaron y configuraron las dependencias de Amplify v6 (`aws-amplify`, `@aws-amplify/auth`).
+- Se refactorizó `LoginForm.jsx` para capturar credenciales y usar la función `signIn` de Amplify, incluyendo manejo de estado de carga y errores de Cognito.
+- Se actualizó `App.jsx` para crear un **sistema de rutas protegidas**, usando `getCurrentUser` para verificar la sesión al cargar la app.
+- Se implementó la función de `signOut` (Cerrar sesión) en el componente `Bienvenida.jsx`.
+
 ### Próximos pasos
 
-- Integrar validación real de login (backend/API).
-- Maquetar dashboard inicial y flujo de navegación protegido.
+- Maquetar dashboard inicial (mejorar la página de `Bienvenida.jsx`).
+- Implementar flujo de "Olvidé mi contraseña" (Forgot Password) con Amplify.
 - Pruebas de despliegue en AWS (S3, Amplify o EC2).
 - Agregar tests automatizados y CI/CD básico.
 
@@ -32,10 +41,10 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 
 ## 🚀 Instalación Rápida
 
-- git clone https://github.com/Sagitari01/lympho-latam-app.git
-- cd lympho-latam-app
-- npm install
-- npm run dev
+- `git clone https://github.com/Sagitari01/lympho-latam-app.git`
+- `cd lympho-latam-app`
+- `npm install`
+- `npm run dev`
 
 
 ---

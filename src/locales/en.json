@@ -5,6 +5,7 @@
     "password": "Password",
     "enter": "Enter",
     "forgot": "Forgot your password?",
-    "success": "Logged in successfully!"
+    "success": "Logged in successfully!",
+    "loading": "Loading..." 
   }
 }

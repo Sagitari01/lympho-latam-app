@@ -24,24 +24,38 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 ### 10/11/2025
 
 - **Integración de Autenticación con AWS Cognito (Amplify v6).**
-- Se descartó el flujo OIDC (con redirección) para implementar un **flujo de autenticación directo** (sin salir de la página) usando AWS Amplify.
+- Se implementó un **flujo de autenticación directo** (sin redirección) usando AWS Amplify.
 - Se instalaron y configuraron las dependencias de Amplify v6 (`aws-amplify`, `@aws-amplify/auth`).
-- Se refactorizó `LoginForm.jsx` para capturar credenciales y usar la función `signIn` de Amplify, incluyendo manejo de estado de carga y errores de Cognito.
-- Se actualizó `App.jsx` para crear un **sistema de rutas protegidas**, usando `getCurrentUser` para verificar la sesión al cargar la app.
-- Se implementó la función de `signOut` (Cerrar sesión) en el componente `Bienvenida.jsx`.
+- Se refactorizó `LoginForm.jsx` para usar `signIn` de Amplify, manejando estado de carga y errores.
+- Se actualizó `App.jsx` para crear un **sistema de rutas protegidas**, usando `getCurrentUser`.
+- Se implementó la función de `signOut` (Cerrar sesión).
 - **Mejoras de UI/UX en el Login:**
     - Se reemplazó el logo temporal por el logo oficial (`LOGOBajadaNEGRO.png`).
     - Se ajustó el CSS del fondo para mejorar el contraste visual.
     - Se añadió el favicon del proyecto (`ICONONEGRO.png`) a la pestaña del navegador.
-    - Se implementaron títulos de página dinámicos que cambian con el idioma (`react-i18next`).
-    - Se completaron las traducciones (EN/ES) para los mensajes de error y se cambió el idioma por defecto a inglés.
+    - Se implementaron títulos de página dinámicos y se completaron traducciones (EN/ES).
+    - Se cambió el idioma por defecto a inglés.
+
+### 11/11/2025
+
+- **Implementación de Flujo "Olvidé Contraseña".**
+    - Se actualizó `LoginForm.jsx` para manejar tres estados de vista: `signIn`, `forgotPassword`, y `confirmPassword`.
+    - Se integraron las funciones `resetPassword` y `confirmResetPassword` de AWS Amplify v6.
+- **Mejora de Usabilidad (UX) en Campos de Contraseña.**
+    - Se añadió un icono de "ojo" (toggle) para mostrar/ocultar la contraseña en los campos de inicio de sesión y nueva contraseña.
+    - Se actualizaron los CSS (`LoginForm.css`) para importar Font Awesome y posicionar el icono.
+- **Refactorización a Layout de Dashboard.**
+    - Se migró el HTML estático del dashboard a una arquitectura de componentes React con un layout persistente (`MainLayout.jsx`).
+    - Se implementaron rutas anidadas (`/app/*`) con `react-router-dom` para las páginas del dashboard (Sesión, Ingreso, Listado, Reportes).
+    - Se refactorizó el CSS a un archivo dedicado (`Dashboard.css`) y se tradujo toda la interfaz del dashboard (ES/EN).
+    - Se actualizó el logo del header a la versión en blanco (`LOGOBajadaBLANCO.png`).
 
 ### Próximos pasos
 
 - Maquetar dashboard inicial (mejorar la página de `Bienvenida.jsx`).
-- Implementar flujo de "Olvidé mi contraseña" (Forgot Password) con Amplify.
 - Pruebas de despliegue en AWS (S3, Amplify o EC2).
 - Agregar tests automatizados y CI/CD básico.
+- Conectar formulario de "Ingreso de Paciente" a un backend (Lambda + API Gateway).
 
 ---
 

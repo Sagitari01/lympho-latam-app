@@ -1,24 +1,24 @@
 import React from "react";
+import { useTranslation } from "react-i18next"; // 1. Importar hook
 
-// 1. Recibimos 'user' y 'onLogout', NO 'auth'
 function Bienvenida({ user, onLogout }) {
-
-  // 2. El email del usuario en Amplify v6 se encuentra aquí
+  const { t } = useTranslation(); // 2. Usar el hook
   const email = user.signInDetails?.loginId || user.username;
 
   return (
-    <div style={{ margin: "100px auto", maxWidth: 400, textAlign: "center" }}>
-      <h2>¡Bienvenido!</h2>
+    <div>
+      {/* 3. Usar 't' para el título */}
+      <h2>{t('dashboard.welcomeTitle')}</h2>
       
-      {/* 3. Mostramos el email desde la variable 'email' */}
-      <p>Estás autenticado como: {email}</p>
+      {/* 4. Usar 't' con interpolación para el email */}
+      <p>{t('dashboard.authenticatedAs', { email: email })}</p>
       
       <button
-        // 4. Llamamos directamente a la función 'onLogout'
         onClick={onLogout}
         style={{ marginTop: "20px", padding: "10px 20px" }}
       >
-        Cerrar sesión
+        {/* 5. Usar 't' para el botón */}
+        {t('dashboard.logoutButton')}
       </button>
     </div>
   );

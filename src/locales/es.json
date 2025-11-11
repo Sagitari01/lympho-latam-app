@@ -10,8 +10,57 @@
     "forgot": "¿Olvidaste tu contraseña?",
     "success": "¡Inicio de sesión exitoso!",
     "loading": "Cargando...",
-
     "errorInvalidCredentials": "Correo o contraseña incorrectos.",
-    "errorAuthGeneric": "Error de autenticación. Por favor, inténtalo de nuevo."
+    "errorAuthGeneric": "Error de autenticación. Por favor, inténtalo de nuevo.",
+    
+    "forgotTitle": "Restablecer Contraseña",
+    "forgotSubtitle": "Ingresa tu correo para recibir un código.",
+    "sendCodeButton": "Enviar Código",
+
+    "confirmTitle": "Definir Nueva Contraseña",
+    "confirmSubtitle": "Revisa tu correo y escribe el código.",
+    "codeLabel": "Código de Confirmación",
+    "newPasswordLabel": "Nueva Contraseña",
+    "confirmButton": "Cambiar Contraseña",
+
+    "backToSignIn": "Volver a Inicio de Sesión",
+
+    "successCodeSent": "¡Código enviado! Revisa tu correo.",
+    "successPasswordChanged": "¡Contraseña cambiada! Ya puedes iniciar sesión."
+  },
+  "dashboard": {
+    "navUserSession": "Sesión de Usuario",
+    "navPatientIntake": "Ingreso de Pacientes",
+    "navPatientList": "Listado de Pacientes",
+    "navReports": "Reportes",
+    "pageUnderConstruction": "Página en construcción",
+    "contentPatientList": "Este es el espacio para el contenido de \"Listado de Pacientes\".",
+    "contentReports": "Este es el espacio para el contenido de \"Reportes\".",
+    "intakeTitle": "Ingreso de Paciente",
+    "searchPlaceholder": "Buscar paciente...",
+    "runSelect": "RUN",
+    "labelName": "Nombre",
+    "labelLastName": "Apellido Paterno",
+    "labelMothersLastName": "Apellido Materno",
+    "labelSocialName": "Nombre Social",
+    "labelSex": "Sexo",
+    "labelGender": "Género",
+    "labelDOB": "Fecha de Nacimiento",
+    "labelAge": "Edad",
+    "labelOccupation": "Ocupación",
+    "labelAddress": "Domicilio",
+    "labelCountry": "País",
+    "labelState": "Estado/Región",
+    "labelNationality": "Nacionalidad",
+    "labelReligion": "Religión",
+    "labelEthnicity": "Etnia",
+    "labelHealthSystem": "Sistema de Salud",
+    "labelAssignedDoctor": "Medico Asignado",
+    "btnSave": "Guardar",
+    "selectPlaceholder": "Seleccionar...",
+    "dobPlaceholder": "DD/MM/AAAA",
+    "welcomeTitle": "¡Bienvenido!",
+    "authenticatedAs": "Estás autenticado como: {{email}}",
+    "logoutButton": "Cerrar sesión"
   }
 }

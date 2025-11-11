@@ -10,8 +10,57 @@
     "forgot": "Forgot your password?",
     "success": "Logged in successfully!",
     "loading": "Loading...",
-    
     "errorInvalidCredentials": "Incorrect email or password.",
-    "errorAuthGeneric": "Authentication error. Please try again."
+    "errorAuthGeneric": "Authentication error. Please try again.",
+    
+    "forgotTitle": "Reset Password",
+    "forgotSubtitle": "Enter your email to receive a code.",
+    "sendCodeButton": "Send Code",
+    
+    "confirmTitle": "Set New Password",
+    "confirmSubtitle": "Check your email for the code.",
+    "codeLabel": "Confirmation Code",
+    "newPasswordLabel": "New Password",
+    "confirmButton": "Change Password",
+    
+    "backToSignIn": "Back to Sign In",
+    
+    "successCodeSent": "Code sent! Check your email.",
+    "successPasswordChanged": "Password changed! You can now log in."
+  },
+  "dashboard": {
+    "navUserSession": "User Session",
+    "navPatientIntake": "Patient Intake",
+    "navPatientList": "Patient List",
+    "navReports": "Reports",
+    "pageUnderConstruction": "Page under construction",
+    "contentPatientList": "This is the placeholder for the Patient List content.",
+    "contentReports": "This is the placeholder for the Reports content.",
+    "intakeTitle": "Patient Intake",
+    "searchPlaceholder": "Search patient...",
+    "runSelect": "ID",
+    "labelName": "Name",
+    "labelLastName": "Last Name",
+    "labelMothersLastName": "Mother's Last Name",
+    "labelSocialName": "Social Name",
+    "labelSex": "Sex",
+    "labelGender": "Gender",
+    "labelDOB": "Date of Birth",
+    "labelAge": "Age",
+    "labelOccupation": "Occupation",
+    "labelAddress": "Address",
+    "labelCountry": "Country",
+    "labelState": "State/Region",
+    "labelNationality": "Nationality",
+    "labelReligion": "Religion",
+    "labelEthnicity": "Ethnicity",
+    "labelHealthSystem": "Health System",
+    "labelAssignedDoctor": "Assigned Doctor",
+    "btnSave": "Save",
+    "selectPlaceholder": "Select...",
+    "dobPlaceholder": "DD/MM/YYYY",
+    "welcomeTitle": "Welcome!",
+    "authenticatedAs": "You are authenticated as: {{email}}",
+    "logoutButton": "Logout"
   }
 }

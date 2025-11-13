@@ -12,19 +12,15 @@
     "loading": "Cargando...",
     "errorInvalidCredentials": "Correo o contraseña incorrectos.",
     "errorAuthGeneric": "Error de autenticación. Por favor, inténtalo de nuevo.",
-    
     "forgotTitle": "Restablecer Contraseña",
     "forgotSubtitle": "Ingresa tu correo para recibir un código.",
     "sendCodeButton": "Enviar Código",
-
     "confirmTitle": "Definir Nueva Contraseña",
     "confirmSubtitle": "Revisa tu correo y escribe el código.",
     "codeLabel": "Código de Confirmación",
     "newPasswordLabel": "Nueva Contraseña",
     "confirmButton": "Cambiar Contraseña",
-
     "backToSignIn": "Volver a Inicio de Sesión",
-
     "successCodeSent": "¡Código enviado! Revisa tu correo.",
     "successPasswordChanged": "¡Contraseña cambiada! Ya puedes iniciar sesión."
   },
@@ -61,6 +57,24 @@
     "dobPlaceholder": "DD/MM/AAAA",
     "welcomeTitle": "¡Bienvenido!",
     "authenticatedAs": "Estás autenticado como: {{email}}",
-    "logoutButton": "Cerrar sesión"
+    "logoutButton": "Cerrar sesión",
+    "listTitle": "Listado de Paciente",
+    "thDate": "Fecha de Ingreso",
+    "thID": "ID Paciente",
+    "thAge": "Edad",
+    "thSex": "Sexo",
+    "thName": "Nombre",
+    "thMedical": "Atención Médica",
+    "thTherapy": "Atención Terapéutica/Kinesiólogo",
+    "thDischarge": "Alta",
+    "searchPlaceholderList": "Buscar por nombre, ID...",
+    "filterAll": "Todos",
+    "filterMale": "Masculino",
+    "filterFemale": "Femenino",
+
+    "confirmDischarge": "¿Estás seguro de que quieres dar de alta a este paciente?",
+    "confirmReAdmit": "¿Estás seguro de que quieres readmitir a este paciente?",
+    "titleDischarge": "Dar de alta al paciente",
+    "titleReAdmit": "Readmitir al paciente"
   }
 }

@@ -8,11 +8,9 @@
     padding: 0;
 }
 
-/* Modificamos 'body' para que no entre en conflicto con React */
-/* El 'body' real lo controlará index.css, pero aplicamos esto al 'root' del layout */
 .dashboard-layout, html, body {
     font-family: Arial, sans-serif;
-    background-color: #e0e6f9; /* Color de fondo principal */
+    background-color: #e0e6f9;
     color: #3b4a6b;
     line-height: 1.6;
 }
@@ -20,14 +18,14 @@
 /* --- Contenedor Principal (para centrar y limitar ancho) --- */
 .container {
     width: 100%;
-    max-width: 1400px; /* Ajustado para el contenido */
+    max-width: 1400px;
     margin: 0 auto;
-    padding: 0 25px 25px 25px; /* Padding solo en laterales e inferior */
+    padding: 0 25px 25px 25px;
 }
 
 /* --- Header Superior (Logo y Fondo Azul Degradado) --- */
 .top-header {
-    background: linear-gradient(to right, #4a6fa5, #007bff); /* Degradado de azul */
+    background: linear-gradient(to right, #4a6fa5, #007bff);
     padding: 20px 25px;
     display: flex;
     align-items: center;
@@ -35,10 +33,8 @@
 }
 
 .logo {
-    /* 👇 CAMBIO: Aumentamos el tamaño del logo */
-    height: 50px;  /* Antes era 40px */
-    width: 225px;  /* Antes era 180px (manteniendo proporción) */
-    
+    height: 50px;
+    width: 225px;
     background-image: url('/images/LOGOBajadaBLANCO.png');
     background-repeat: no-repeat;
     background-size: contain;
@@ -86,9 +82,8 @@ nav.main-nav ul li a:hover {
     color: #2c3e50;
 }
 
-/* React Router (NavLink) añadirá la clase 'active' automáticamente */
 nav.main-nav ul li a.active {
-    background-color: #e0e6f9; /* Fondo activo igual al body */
+    background-color: #e0e6f9;
     color: #2c3e50;
     border-bottom: 2px solid #e0e6f9;
     position: relative;
@@ -258,8 +253,8 @@ select:not(.run-select) {
         padding: 15px 20px;
     }
     .logo {
-        height: 35px;
-        width: 150px;
+        height: 45px;
+        width: 200px;
     }
     .form-header {
         padding: 10px 20px;
@@ -304,4 +299,158 @@ select:not(.run-select) {
     nav.main-nav ul {
         gap: 5px;
     }
+}
+
+/* --- Estilos para la Tabla de Pacientes --- */
+
+.patient-table-container {
+    width: 100%;
+    overflow-x: auto;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.patient-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.patient-table th,
+.patient-table td {
+    padding: 12px 15px;
+    border: 1px solid #a8b9e0;
+    text-align: left;
+    vertical-align: middle;
+}
+
+.patient-table th {
+    background-color: #c9d4f0;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.patient-table tbody tr {
+    background-color: #f0f4ff;
+}
+
+.patient-table tbody tr:nth-child(even) {
+    background-color: #e0e6f9;
+}
+
+.patient-table td {
+    color: #3b4a6b;
+}
+
+/* Estilos para iconos y botones */
+.sex-icon-male {
+    color: #007bff;
+    font-size: 1.5rem;
+}
+
+.sex-icon-female {
+    color: #e91e63;
+    font-size: 1.5rem;
+}
+
+.icon-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-size: 2rem;
+    color: #4a6fa5;
+    transition: transform 0.2s ease, color 0.2s ease;
+    display: block;
+    margin: 0 auto;
+}
+
+.icon-button:hover {
+    transform: scale(1.1);
+}
+
+.icon-medical {
+    color: #28a745;
+}
+
+.icon-therapy {
+    color: #6f42c1;
+}
+
+.icon-discharge-active {
+    color: #dc3545; /* Rojo - Activo */
+    font-size: 1.8rem;
+}
+
+.icon-discharge-complete {
+    color: #28a745; /* Verde - Dado de alta */
+    font-size: 1.8rem;
+}
+
+
+/* --- Estilos para los Filtros de Tabla --- */
+
+.table-filter-bar {
+    margin-bottom: 20px;
+    display: flex;
+    gap: 15px;
+}
+
+.table-search-input {
+    flex-grow: 1;
+    padding: 12px 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    background-color: #ffffff;
+    font-size: 1rem;
+    color: #2c3e50;
+}
+
+.column-filter {
+    width: 100%;
+    max-width: 120px;
+    padding: 5px;
+    margin-top: 5px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    background-color: #e0e6f9;
+    font-size: 0.9rem;
+}
+
+/* --- Estilos para Ordenamiento --- */
+
+.sortable-header {
+    cursor: pointer;
+    user-select: none;
+}
+
+.sortable-header:hover {
+    background-color: #b0c4de;
+}
+
+.sort-icon {
+    margin-left: 5px;
+    font-size: 0.8em;
+    color: #2c3e50;
+    width: 10px;
+    display: inline-block;
+}
+
+/* --- 👇 SECCIÓN AÑADIDA: Estilos para el selector de idioma --- */
+/* (Copiado de LoginForm.css para consistencia) */
+
+.lang-switch {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 10; /* Asegura que esté sobre el header */
+}
+.lang-switch button {
+  margin-left: 6px;
+  background: #4f46e5;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  padding: 5px 12px;
+  cursor: pointer;
 }

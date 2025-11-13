@@ -12,19 +12,15 @@
     "loading": "Loading...",
     "errorInvalidCredentials": "Incorrect email or password.",
     "errorAuthGeneric": "Authentication error. Please try again.",
-    
     "forgotTitle": "Reset Password",
     "forgotSubtitle": "Enter your email to receive a code.",
     "sendCodeButton": "Send Code",
-    
     "confirmTitle": "Set New Password",
     "confirmSubtitle": "Check your email for the code.",
     "codeLabel": "Confirmation Code",
     "newPasswordLabel": "New Password",
     "confirmButton": "Change Password",
-    
     "backToSignIn": "Back to Sign In",
-    
     "successCodeSent": "Code sent! Check your email.",
     "successPasswordChanged": "Password changed! You can now log in."
   },
@@ -61,6 +57,24 @@
     "dobPlaceholder": "DD/MM/YYYY",
     "welcomeTitle": "Welcome!",
     "authenticatedAs": "You are authenticated as: {{email}}",
-    "logoutButton": "Logout"
+    "logoutButton": "Logout",
+    "listTitle": "Patient List",
+    "thDate": "Entry Date",
+    "thID": "Patient ID",
+    "thAge": "Age",
+    "thSex": "Sex",
+    "thName": "Name",
+    "thMedical": "Medical Care",
+    "thTherapy": "Therapeutic Care",
+    "thDischarge": "Discharge",
+    "searchPlaceholderList": "Search by name, ID...",
+    "filterAll": "All",
+    "filterMale": "Male",
+    "filterFemale": "Female",
+
+    "confirmDischarge": "Are you sure you want to discharge this patient?",
+    "confirmReAdmit": "Are you sure you want to re-admit this patient?",
+    "titleDischarge": "Discharge Patient",
+    "titleReAdmit": "Re-admit Patient"
   }
 }

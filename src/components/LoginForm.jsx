@@ -22,7 +22,7 @@ export default function LoginForm({ onLoginSuccess }) {
   const [error, setError] = useState(null);
   const [successMessage, setSuccessMessage] = useState(null);
 
-  // --- 👇 CAMBIO: Estados para visibilidad de contraseña ---
+  // --- Estados para visibilidad de contraseña ---
   const [isSignInPasswordVisible, setIsSignInPasswordVisible] = useState(false);
   const [isNewPasswordVisible, setIsNewPasswordVisible] = useState(false);
 
@@ -37,7 +37,7 @@ export default function LoginForm({ onLoginSuccess }) {
     i18n.changeLanguage(lang);
   };
 
-  // ... (Manejadores de submit, goTo... etc. no cambian) ...
+  // --- Manejador de Inicio de Sesión (Existente) ---
   const handleSubmitSignIn = async (event) => {
     event.preventDefault();
     if (isLoading) return;
@@ -132,18 +132,15 @@ setError(null);
           />
         </div>
 
-        {/* --- 👇 CAMBIO: Contenedor de contraseña --- */}
         <div className="form-group">
           <label htmlFor="password">{t('login.password')}</label>
           <div className="password-input-container">
             <input
-              // Tipo dinámico
               type={isSignInPasswordVisible ? 'text' : 'password'}
               id="password" required
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
-            {/* Icono de "ojo" */}
             <i 
               className={`password-toggle-icon fa-solid ${isSignInPasswordVisible ? 'fa-eye-slash' : 'fa-eye'}`}
               onClick={() => setIsSignInPasswordVisible(!isSignInPasswordVisible)}
@@ -203,18 +200,15 @@ setError(null);
           />
         </div>
         
-        {/* --- 👇 CAMBIO: Contenedor de contraseña --- */}
         <div className="form-group">
           <label htmlFor="newPassword">{t('login.newPasswordLabel')}</label>
           <div className="password-input-container">
             <input
-              // Tipo dinámico
               type={isNewPasswordVisible ? 'text' : 'password'}
               id="newPassword" required
               value={newPassword}
-              onChange={(e) => setNewPassword(e.targe.value)}
+              onChange={(e) => setNewPassword(e.target.value)}
             />
-            {/* Icono de "ojo" */}
             <i 
               className={`password-toggle-icon fa-solid ${isNewPasswordVisible ? 'fa-eye-slash' : 'fa-eye'}`}
               onClick={() => setIsNewPasswordVisible(!isNewPasswordVisible)}
@@ -241,6 +235,8 @@ setError(null);
       <div className="lang-switch">
         <button onClick={() => handleLanguageChange('es')}>ES</button>
         <button onClick={() => handleLanguageChange('en')}>EN</button>
+        {/* 3. Añadir botón de Portugués */}
+        <button onClick={() => handleLanguageChange('pt')}>PT</button>
       </div>
       
       <div className="login-container">

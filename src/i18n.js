@@ -3,7 +3,8 @@ import { initReactI18next } from "react-i18next";
 
 import es from "./locales/es.json";
 import en from "./locales/en.json";
-import pt from "./locales/pt.json"; 
+// 👇 CAMBIO: Importamos 'br' en lugar de 'pt'
+import br from "./locales/br.json"; 
 
 i18n
   .use(initReactI18next)
@@ -11,7 +12,8 @@ i18n
     resources: {
       es: { translation: es },
       en: { translation: en },
-      pt: { translation: pt } 
+      // 👇 CAMBIO: Usamos la llave 'br'
+      br: { translation: br } 
     },
     
     lng: "en", // Idioma inicial

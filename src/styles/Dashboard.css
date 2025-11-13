@@ -1,4 +1,4 @@
-/* Importa FontAwesome (reemplaza al <link> del HTML) */
+/* Importa FontAwesome */
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css');
 
 /* --- Reseteo Básico y Estilos Globales --- */
@@ -437,13 +437,11 @@ select:not(.run-select) {
 }
 
 /* --- 👇 SECCIÓN AÑADIDA: Estilos para el selector de idioma --- */
-/* (Copiado de LoginForm.css para consistencia) */
-
 .lang-switch {
   position: absolute;
   top: 16px;
   right: 16px;
-  z-index: 10; /* Asegura que esté sobre el header */
+  z-index: 10;
 }
 .lang-switch button {
   margin-left: 6px;
@@ -453,4 +451,15 @@ select:not(.run-select) {
   border-radius: 4px;
   padding: 5px 12px;
   cursor: pointer;
+  
+  /* Alinea la bandera y el texto */
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.lang-switch button .fi {
+  margin-right: 6px;
+  font-size: 1em;
+  border-radius: 2px;
 }

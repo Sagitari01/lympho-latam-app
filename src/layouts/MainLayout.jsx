@@ -1,12 +1,11 @@
 import React from 'react';
 import { NavLink, Outlet, useOutletContext } from 'react-router-dom';
-import { useTranslation } from 'react-i18next'; // 1. Importar hook
+import { useTranslation } from 'react-i18next';
 import '../styles/Dashboard.css';
 
 function MainLayout({ user, onLogout }) {
-  const { t, i18n } = useTranslation(); // 2. Usar hook
+  const { t, i18n } = useTranslation();
 
-  // 3. Añadir función para cambiar idioma
   const handleLanguageChange = (lang) => {
     i18n.changeLanguage(lang);
   };
@@ -19,11 +18,10 @@ function MainLayout({ user, onLogout }) {
         </div>
       </div>
 
-      {/* 4. Añadir selector de idioma (copiado de LoginForm) */}
       <div className="lang-switch">
-        <button onClick={() => handleLanguageChange('es')}>ES</button>
-        <button onClick={() => handleLanguageChange('en')}>EN</button>
-        <button onClick={() => handleLanguageChange('pt')}>PT</button>
+        <button onClick={() => handleLanguageChange('es')}><span className="fi fi-es"></span> ES</button>
+        <button onClick={() => handleLanguageChange('en')}><span className="fi fi-gb"></span> EN</button>
+        <button onClick={() => handleLanguageChange('br')}><span className="fi fi-br"></span> BR</button>
       </div>
 
       <nav className="main-nav">

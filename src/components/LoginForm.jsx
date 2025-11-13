@@ -233,10 +233,10 @@ setError(null);
   return (
     <div className="login-bg">
       <div className="lang-switch">
-        <button onClick={() => handleLanguageChange('es')}>ES</button>
-        <button onClick={() => handleLanguageChange('en')}>EN</button>
-        {/* 3. Añadir botón de Portugués */}
-        <button onClick={() => handleLanguageChange('pt')}>PT</button>
+        <button onClick={() => handleLanguageChange('es')}><span className="fi fi-es"></span> ES</button>
+        <button onClick={() => handleLanguageChange('en')}><span className="fi fi-gb"></span> EN</button>
+        {/* --- 👇 CAMBIO: Llama a 'br' --- */}
+        <button onClick={() => handleLanguageChange('br')}><span className="fi fi-br"></span> BR</button>
       </div>
       
       <div className="login-container">

@@ -5,6 +5,9 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Amplify } from 'aws-amplify';
 
+// 👇 --- AÑADIR ESTA LÍNEA ---
+import 'flag-icons/css/flag-icons.min.css';
+
 // 👇 Configuración actualizada para v6
 Amplify.configure({
   Auth: {

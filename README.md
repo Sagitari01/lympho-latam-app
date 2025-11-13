@@ -43,19 +43,33 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
     - Se integraron las funciones `resetPassword` y `confirmResetPassword` de AWS Amplify v6.
 - **Mejora de Usabilidad (UX) en Campos de Contraseña.**
     - Se añadió un icono de "ojo" (toggle) para mostrar/ocultar la contraseña en los campos de inicio de sesión y nueva contraseña.
-    - Se actualizaron los CSS (`LoginForm.css`) para importar Font Awesome y posicionar el icono.
 - **Refactorización a Layout de Dashboard.**
     - Se migró el HTML estático del dashboard a una arquitectura de componentes React con un layout persistente (`MainLayout.jsx`).
     - Se implementaron rutas anidadas (`/app/*`) con `react-router-dom` para las páginas del dashboard (Sesión, Ingreso, Listado, Reportes).
     - Se refactorizó el CSS a un archivo dedicado (`Dashboard.css`) y se tradujo toda la interfaz del dashboard (ES/EN).
     - Se actualizó el logo del header a la versión en blanco (`LOGOBajadaBLANCO.png`).
 
+### 13/11/2025
+
+- **Implementación de "Listado de Pacientes".**
+    - Se maquetó la página `ListadoPacientes.jsx` con una tabla estilizada.
+    - Se implementó funcionalidad de **filtros** en el frontend (búsqueda general y filtro por columna "Sexo").
+    - Se implementó funcionalidad de **ordenamiento** (ascendente/descendente) en todas las columnas clickables.
+- **Mejora de Interactividad en Tabla.**
+    - Se implementó la lógica para cambiar el estado de "Alta" (`true`/`false`) de un paciente.
+    - Se añadió una ventana de confirmación (`window.confirm`) para validar la acción de dar de alta/readmitir.
+    - Los iconos de alta ahora cambian de color (rojo/verde) según el estado del paciente.
+- **Internacionalización (i18n): Añadido Portugués.**
+    - Se creó el archivo de traducción `pt.json` para toda la aplicación.
+    - Se actualizó `i18n.js` para incluir el nuevo idioma.
+    - Se añadieron los botones de cambio de idioma (ES/EN/PT) a `LoginForm.jsx` y `MainLayout.jsx`.
+
 ### Próximos pasos
 
-- Maquetar dashboard inicial (mejorar la página de `Bienvenida.jsx`).
-- Pruebas de despliegue en AWS (S3, Amplify o EC2).
-- Agregar tests automatizados y CI/CD básico.
 - Conectar formulario de "Ingreso de Paciente" a un backend (Lambda + API Gateway).
+- Conectar "Listado de Pacientes" al backend para obtener y filtrar datos reales.
+- Maquetar las páginas de "Atención Médica" y "Atención Terapéutica" (actualmente links vacíos).
+- Pruebas de despliegue en AWS (EC2 o Amplify Hosting).
 
 ---
 
@@ -79,7 +93,7 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 
 ## 🌎 Internacionalización
 
-- Cambia entre Español/Inglés desde el menú superior derecho.
+- Cambia entre Español/Inglés/Portugués desde el menú superior derecho.
 - Modifica los archivos en `/src/locales` para agregar más idiomas.
 
 ---

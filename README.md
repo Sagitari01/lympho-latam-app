@@ -58,18 +58,22 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 - **Mejora de Interactividad en Tabla.**
     - Se implementó la lógica para cambiar el estado de "Alta" (`true`/`false`) de un paciente.
     - Se añadió una ventana de confirmación (`window.confirm`) para validar la acción de dar de alta/readmitir.
-    - Los iconos de alta ahora cambian de color (rojo/verde) según el estado del paciente.
 - **Internacionalización (i18n): Añadido Portugués de Brasil.**
     - Se creó el archivo de traducción `br.json` (Portugués de Brasil).
     - Se actualizó `i18n.js` para incluir el nuevo idioma (`br`).
     - Se añadió la biblioteca `flag-icons` para mostrar las banderas (`fi-es`, `fi-gb`, `fi-br`).
-    - Se añadieron los botones de cambio de idioma a `LoginForm.jsx` y `MainLayout.jsx`.
+- **Implementación de "Atención Médica" (Layout Anidado).**
+    - Se corrigió la carga de datos del usuario en `App.jsx` usando `fetchUserAttributes` para obtener `name`, `phone_number`, etc.
+    - Se creó el layout anidado `AtencionMedicaLayout.jsx` con navegación vertical y sub-rutas.
+    - El campo "Medico" ahora muestra el nombre del doctor logueado (`user.attributes.name`).
+- **Actualización de "Sesión de Usuario".**
+    - `Bienvenida.jsx` ahora muestra una tarjeta de perfil con los datos completos del doctor (Nombre, Correo, Teléfono).
 
 ### Próximos pasos
 
 - Conectar formulario de "Ingreso de Paciente" a un backend (Lambda + API Gateway).
 - Conectar "Listado de Pacientes" al backend para obtener y filtrar datos reales.
-- Maquetar las páginas de "Atención Médica" y "Atención Terapéutica" (actualmente links vacíos).
+- Maquetar las páginas de "Atención Terapéutica" (actualmente un link vacío).
 - Pruebas de despliegue en AWS (EC2 o Amplify Hosting).
 
 ---

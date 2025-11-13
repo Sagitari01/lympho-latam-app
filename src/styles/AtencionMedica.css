@@ -1,0 +1,148 @@
+/* --- Estilos para la página de Atención Médica --- */
+
+/* Sub-header (donde va "MEDICO:") */
+.medical-subheader {
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    align-items: center;
+    padding: 10px 25px;
+    background-color: #f0f4ff; /* Un color de fondo muy claro */
+    border-bottom: 1px solid #a8b9e0;
+}
+
+.medical-subheader label {
+    font-weight: 600;
+    color: #3b4a6b;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+/* --- 👇 CAMBIO: Estilo para el nombre del médico --- */
+.medical-subheader .medico-name {
+    padding: 6px 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    background-color: #d8e2f3; /* Mismo fondo que un input deshabilitado */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Contenedor principal de 2 columnas */
+.medical-layout-container {
+    display: flex;
+    gap: 25px;
+}
+
+/* Navegación vertical izquierda */
+.medical-nav {
+    flex-basis: 220px; /* Ancho fijo para la barra lateral */
+    flex-shrink: 0;
+}
+
+.medical-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.medical-nav-list li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #4a6fa5;
+    background-color: #d8e2f3;
+    border-bottom: 1px solid #c9d4f0;
+    transition: all 0.2s ease;
+}
+
+.medical-nav-list li a:hover {
+    background-color: #b0c4de;
+}
+
+/* Estilo para el botón activo en el nav vertical */
+.medical-nav-list li a.active {
+    background-color: #f0f4ff; /* Fondo blanco/claro */
+    color: #2c3e50;
+    border-left: 5px solid #007bff; /* Borde azul distintivo */
+    padding-left: 15px;
+}
+
+/* Contenido principal (columna derecha) */
+.medical-content {
+    flex-grow: 1; /* Ocupa el resto del espacio */
+}
+
+/* Caja de información del paciente */
+.patient-info-box {
+    padding: 15px;
+    background-color: #f0f4ff;
+    border-radius: 8px;
+    border: 1px solid #c9d4f0;
+    margin-bottom: 25px;
+    
+    /* Grilla para los datos del paciente */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 10px 20px; /* Espacio entre filas y columnas */
+    font-size: 0.95rem;
+}
+
+.patient-info-box p {
+    margin: 0;
+    color: #3b4a6b;
+}
+
+.patient-info-box p strong {
+    color: #2c3e50;
+    margin-right: 8px;
+}
+
+/* Contenido de la sub-página (ej. Motivo de Consulta) */
+.subpage-content {
+    background-color: #f0f4ff;
+    border: 1px solid #c9d4f0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.subpage-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 2px solid #c9d4f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.subpage-header h2 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+}
+
+.subpage-header .save-button {
+    background-color: #4f46e5; /* Botón de guardar (estilo login) */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 20px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.subpage-header .save-button:hover {
+    background-color: #3a32b3;
+}
+
+.subpage-content textarea {
+    width: 100%;
+    min-height: 400px; /* Altura grande */
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    padding: 15px;
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    resize: vertical; /* Permite redimensionar verticalmente */
+}

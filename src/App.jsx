@@ -1,20 +1,19 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react"; // 1. Importar useCallback
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { getCurrentUser, signOut } from '@aws-amplify/auth';
+
+// 2. Importar la nueva función
+import { getCurrentUser, signOut, fetchUserAttributes } from '@aws-amplify/auth';
 
 // --- Componentes/Páginas ---
-
-// Públicas
 import LoginForm from "./components/LoginForm";
-
-// Layout Principal (Protegido)
 import MainLayout from "./layouts/MainLayout";
-
-// Páginas del Dashboard (Hijas de MainLayout)
 import SesionUsuario from "./pages/dashboard/SesionUsuario";
 import IngresoPaciente from "./pages/dashboard/IngresoPaciente";
 import ListadoPacientes from "./pages/dashboard/ListadoPacientes";
 import Reportes from "./pages/dashboard/Reportes";
+import AtencionMedicaLayout from "./layouts/AtencionMedicaLayout";
+import MotivoConsulta from "./pages/atencion-medica/MotivoConsulta";
+import PlaceholderPage from "./pages/atencion-medica/PlaceholderPage";
 
 // --- Componente App ---
 
@@ -22,31 +21,46 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    checkUser();
-  }, []);
-
-  async function checkUser() {
+  // 3. Definimos la función checkUser UNA SOLA VEZ
+  // Esta función ahora trae la sesión Y los atributos
+  const checkUser = useCallback(async () => {
+    setIsLoading(true); // Ponemos el loading aquí
     try {
-      const currentUser = await getCurrentUser();
-      setUser(currentUser);
+      // Paso 1: Obtener la sesión (quién es el usuario)
+      const sessionUser = await getCurrentUser();
+      
+      // Paso 2: Obtener los atributos (name, email, etc.)
+      const attributes = await fetchUserAttributes();
+      
+      // Paso 3: Combinarlos en el estado 'user'
+      setUser({
+        ...sessionUser, // { username, userId, signInDetails }
+        attributes: attributes // { name: '...', email: '...' }
+      });
+      
     } catch (error) {
       setUser(null);
     }
-    setIsLoading(false);
-  }
+    setIsLoading(false); // Quitamos el loading al final
+  }, []); // useCallback con array vacío, solo se crea una vez
+
+  // 4. useEffect ahora solo llama a la función
+  useEffect(() => {
+    checkUser();
+  }, [checkUser]); // Se ejecuta al montar
 
   const handleLogout = async () => {
     try {
       await signOut();
-      setUser(null); // Esto causará que el router redirija a "/"
+      setUser(null);
     } catch (error) {
       console.error('Error al cerrar sesión:', error);
     }
   };
 
+  // 5. handleLoginSuccess ahora solo llama a la función
   const handleLoginSuccess = () => {
-    setIsLoading(true);
+    // No es necesario setIsLoading(true), checkUser ya lo hace
     checkUser();
   };
 
@@ -68,7 +82,6 @@ function App() {
             !user ? (
               <LoginForm onLoginSuccess={handleLoginSuccess} />
             ) : (
-              // Si ya hay usuario, llévalo al dashboard
               <Navigate to="/app" replace />
             )
           }
@@ -79,28 +92,32 @@ function App() {
           path="/app"
           element={
             user ? (
-              // 1. Si hay usuario, muestra el Layout Principal
               <MainLayout user={user} onLogout={handleLogout} />
             ) : (
-              // 2. Si no hay usuario, regresa al login
               <Navigate to="/" replace />
             )
           }
         >
-          {/* Estas son las rutas "hijas" que se renderizarán 
-            dentro del <Outlet /> de MainLayout */}
-          
           <Route path="sesion" element={<SesionUsuario />} />
           <Route path="ingreso" element={<IngresoPaciente />} />
           <Route path="listado" element={<ListadoPacientes />} />
           <Route path="reportes" element={<Reportes />} />
           
-          {/* Si alguien entra a /app, lo redirigimos a la pág. de sesión */}
+          <Route path="atencion-medica/:pacienteId" element={<AtencionMedicaLayout />}>
+            <Route path="motivo-consulta" element={<MotivoConsulta />} />
+            <Route path="anamnesis" element={<PlaceholderPage />} />
+            <Route path="signos-vitales" element={<PlaceholderPage />} />
+            <Route path="examen-fisico" element={<PlaceholderPage />} />
+            <Route path="diagnostico" element={<PlaceholderPage />} />
+            <Route path="evolucion" element={<PlaceholderPage />} />
+            <Route path="procedimiento" element={<PlaceholderPage />} />
+            <Route index element={<Navigate to="motivo-consulta" replace />} />
+          </Route>
+
           <Route index element={<Navigate to="sesion" replace />} />
         </Route>
 
         {/* --- Fallback --- */}
-        {/* Si se entra a cualquier otra ruta, redirige a la base */}
         <Route path="*" element={<Navigate to="/" replace />} />
         
       </Routes>

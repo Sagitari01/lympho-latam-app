@@ -71,10 +71,36 @@
     "filterAll": "All",
     "filterMale": "Male",
     "filterFemale": "Female",
-
     "confirmDischarge": "Are you sure you want to discharge this patient?",
     "confirmReAdmit": "Are you sure you want to re-admit this patient?",
     "titleDischarge": "Discharge Patient",
-    "titleReAdmit": "Re-admit Patient"
+    "titleReAdmit": "Re-admit Patient",
+    "doctorDataTitle": "Doctor's Information",
+    "doctorName": "Name:",
+    "doctorEmail": "Email:",
+    "doctorPhone": "Phone:"
+  },
+  "atencionMedica": {
+    "headerTitle": "Medical Care",
+    "doctorLabel": "DOCTOR:",
+    "btnSave": "Save",
+    "patientInfo": {
+      "name": "Name",
+      "age": "Age",
+      "sex": "Sex",
+      "nationality": "Nationality",
+      "address": "Address",
+      "country": "Country",
+      "state": "State"
+    },
+    "nav": {
+      "motivo": "Reason for Consultation",
+      "anamnesis": "Anamnesis",
+      "signos": "Vital Signs",
+      "examen": "Physical Exam",
+      "diagnostico": "Diagnosis",
+      "evolucion": "Evolution & Follow-up",
+      "procedimiento": "Procedure"
+    }
   }
 }

@@ -71,10 +71,36 @@
     "filterAll": "Todos",
     "filterMale": "Masculino",
     "filterFemale": "Femenino",
-
     "confirmDischarge": "¿Estás seguro de que quieres dar de alta a este paciente?",
     "confirmReAdmit": "¿Estás seguro de que quieres readmitir a este paciente?",
     "titleDischarge": "Dar de alta al paciente",
-    "titleReAdmit": "Readmitir al paciente"
+    "titleReAdmit": "Readmitir al paciente",
+    "doctorDataTitle": "Información del Doctor",
+    "doctorName": "Nombre:",
+    "doctorEmail": "Correo:",
+    "doctorPhone": "Teléfono:"
+  },
+  "atencionMedica": {
+    "headerTitle": "Atención Médica",
+    "doctorLabel": "MEDICO:",
+    "btnSave": "Guardar",
+    "patientInfo": {
+      "name": "Nombre",
+      "age": "Edad",
+      "sex": "Sexo",
+      "nationality": "Nacionalidad",
+      "address": "Dirección",
+      "country": "País",
+      "state": "Estado"
+    },
+    "nav": {
+      "motivo": "Motivo de Consulta",
+      "anamnesis": "Anamnesis",
+      "signos": "Signos Vitales",
+      "examen": "Examen Físico",
+      "diagnostico": "Diagnostico",
+      "evolucion": "Evolución y Seguimiento",
+      "procedimiento": "Procedimiento"
+    }
   }
 }

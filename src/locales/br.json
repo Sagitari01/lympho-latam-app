@@ -74,6 +74,33 @@
     "confirmDischarge": "Tem certeza que deseja dar alta a este paciente?",
     "confirmReAdmit": "Tem certeza que deseja readmitir este paciente?",
     "titleDischarge": "Dar alta ao paciente",
-    "titleReAdmit": "Readmitir paciente"
+    "titleReAdmit": "Readmitir paciente",
+    "doctorDataTitle": "Informações do Doutor",
+    "doctorName": "Nome:",
+    "doctorEmail": "E-mail:",
+    "doctorPhone": "Telefone:"
+  },
+  "atencionMedica": {
+    "headerTitle": "Atendimento Médico",
+    "doctorLabel": "MÉDICO:",
+    "btnSave": "Salvar",
+    "patientInfo": {
+      "name": "Nome",
+      "age": "Idade",
+      "sex": "Sexo",
+      "nationality": "Nacionalidade",
+      "address": "Endereço",
+      "country": "País",
+      "state": "Estado"
+    },
+    "nav": {
+      "motivo": "Motivo da Consulta",
+      "anamnesis": "Anamnese",
+      "signos": "Sinais Vitais",
+      "examen": "Exame Físico",
+      "diagnostico": "Diagnóstico",
+      "evolucion": "Evolução e Acompanhamento",
+      "procedimiento": "Procedimento"
+    }
   }
 }

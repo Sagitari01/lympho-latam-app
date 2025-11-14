@@ -1,0 +1,108 @@
+/* --- Estilos para la página de Atención Terapéutica --- */
+
+/* Sub-header (donde va "Terapeuta:") */
+.terapeutica-subheader {
+    display: flex;
+    justify-content: flex-end; /* Alinea el contenido a la derecha */
+    align-items: center;
+    padding: 10px 25px;
+    background-color: #f0f4ff; /* Un color de fondo muy claro */
+    border-bottom: 1px solid #a8b9e0;
+}
+
+.terapeutica-subheader label {
+    font-weight: 600;
+    color: #3b4a6b;
+    margin-right: 10px;
+    font-size: 0.9rem;
+}
+
+.terapeutica-subheader .terapeuta-name {
+    padding: 6px 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    background-color: #d8e2f3; /* Mismo fondo que un input deshabilitado */
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Contenedor principal de 2 columnas */
+.terapeutica-layout-container {
+    display: flex;
+    gap: 25px;
+}
+
+/* Navegación vertical izquierda */
+.terapeutica-nav {
+    flex-basis: 220px; /* Ancho fijo para la barra lateral */
+    flex-shrink: 0;
+}
+
+.terapeutica-nav-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.terapeutica-nav-list li a {
+    display: block;
+    padding: 15px 20px;
+    text-decoration: none;
+    font-weight: 600;
+    color: #4a6fa5;
+    background-color: #d8e2f3;
+    border-bottom: 1px solid #c9d4f0;
+    transition: all 0.2s ease;
+}
+
+.terapeutica-nav-list li a:hover {
+    background-color: #b0c4de;
+}
+
+/* Estilo para el botón activo en el nav vertical */
+.terapeutica-nav-list li a.active {
+    background-color: #f0f4ff; /* Fondo blanco/claro */
+    color: #2c3e50;
+    border-left: 5px solid #007bff; /* Borde azul distintivo */
+    padding-left: 15px;
+}
+
+/* Contenido principal (columna derecha) */
+.terapeutica-content {
+    flex-grow: 1; /* Ocupa el resto del espacio */
+}
+
+/* Caja de información del paciente (ligeramente modificada) */
+.patient-info-box {
+    padding: 15px;
+    background-color: #f0f4ff;
+    border-radius: 8px;
+    border: 1px solid #c9d4f0;
+    margin-bottom: 25px;
+    
+    /* Grilla para los datos del paciente (3 columnas) */
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px 20px;
+    font-size: 0.95rem;
+}
+
+/* El campo de diagnóstico ocupará 2 columnas */
+.patient-info-box .info-diag {
+    grid-column: 1 / span 2;
+}
+
+
+.patient-info-box p {
+    margin: 0;
+    color: #3b4a6b;
+}
+
+.patient-info-box p strong {
+    color: #2c3e50;
+    margin-right: 8px;
+}
+
+/* Contenido de la sub-página (ej. Motivo de Consulta) */
+/* (Reutilizamos los estilos de AtencionMedica.css: .subpage-content, .subpage-header, etc.) */

@@ -1,19 +1,26 @@
-import React, { useState, useEffect, useCallback } from "react"; // 1. Importar useCallback
+import React, { useState, useEffect, useCallback } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-
-// 2. Importar la nueva función
 import { getCurrentUser, signOut, fetchUserAttributes } from '@aws-amplify/auth';
 
 // --- Componentes/Páginas ---
 import LoginForm from "./components/LoginForm";
 import MainLayout from "./layouts/MainLayout";
+
+// Páginas del Dashboard
 import SesionUsuario from "./pages/dashboard/SesionUsuario";
 import IngresoPaciente from "./pages/dashboard/IngresoPaciente";
 import ListadoPacientes from "./pages/dashboard/ListadoPacientes";
 import Reportes from "./pages/dashboard/Reportes";
+
+// Páginas de Atención Médica
 import AtencionMedicaLayout from "./layouts/AtencionMedicaLayout";
-import MotivoConsulta from "./pages/atencion-medica/MotivoConsulta";
-import PlaceholderPage from "./pages/atencion-medica/PlaceholderPage";
+import MotivoConsultaMedica from "./pages/atencion-medica/MotivoConsulta";
+import PlaceholderPageMedica from "./pages/atencion-medica/PlaceholderPage";
+
+// --- 👇 NUEVO: Layout y Páginas de Atención Terapéutica ---
+import AtencionTerapeuticaLayout from "./layouts/AtencionTerapeuticaLayout";
+import MotivoConsultaTerapeutica from "./pages/atencion-terapeutica/MotivoConsulta";
+import PlaceholderPageTerapeutica from "./pages/atencion-terapeutica/PlaceholderPage";
 
 // --- Componente App ---
 
@@ -21,33 +28,24 @@ function App() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // 3. Definimos la función checkUser UNA SOLA VEZ
-  // Esta función ahora trae la sesión Y los atributos
   const checkUser = useCallback(async () => {
-    setIsLoading(true); // Ponemos el loading aquí
+    setIsLoading(true);
     try {
-      // Paso 1: Obtener la sesión (quién es el usuario)
       const sessionUser = await getCurrentUser();
-      
-      // Paso 2: Obtener los atributos (name, email, etc.)
       const attributes = await fetchUserAttributes();
-      
-      // Paso 3: Combinarlos en el estado 'user'
       setUser({
-        ...sessionUser, // { username, userId, signInDetails }
-        attributes: attributes // { name: '...', email: '...' }
+        ...sessionUser,
+        attributes: attributes
       });
-      
     } catch (error) {
       setUser(null);
     }
-    setIsLoading(false); // Quitamos el loading al final
-  }, []); // useCallback con array vacío, solo se crea una vez
+    setIsLoading(false);
+  }, []);
 
-  // 4. useEffect ahora solo llama a la función
   useEffect(() => {
     checkUser();
-  }, [checkUser]); // Se ejecuta al montar
+  }, [checkUser]);
 
   const handleLogout = async () => {
     try {
@@ -58,9 +56,7 @@ function App() {
     }
   };
 
-  // 5. handleLoginSuccess ahora solo llama a la función
   const handleLoginSuccess = () => {
-    // No es necesario setIsLoading(true), checkUser ya lo hace
     checkUser();
   };
 
@@ -98,22 +94,40 @@ function App() {
             )
           }
         >
+          {/* Páginas principales del dashboard */}
           <Route path="sesion" element={<SesionUsuario />} />
           <Route path="ingreso" element={<IngresoPaciente />} />
           <Route path="listado" element={<ListadoPacientes />} />
           <Route path="reportes" element={<Reportes />} />
           
+          {/* Rutas Anidadas para Atención Médica */}
           <Route path="atencion-medica/:pacienteId" element={<AtencionMedicaLayout />}>
-            <Route path="motivo-consulta" element={<MotivoConsulta />} />
-            <Route path="anamnesis" element={<PlaceholderPage />} />
-            <Route path="signos-vitales" element={<PlaceholderPage />} />
-            <Route path="examen-fisico" element={<PlaceholderPage />} />
-            <Route path="diagnostico" element={<PlaceholderPage />} />
-            <Route path="evolucion" element={<PlaceholderPage />} />
-            <Route path="procedimiento" element={<PlaceholderPage />} />
+            <Route path="motivo-consulta" element={<MotivoConsultaMedica />} />
+            <Route path="anamnesis" element={<PlaceholderPageMedica />} />
+            <Route path="signos-vitales" element={<PlaceholderPageMedica />} />
+            <Route path="examen-fisico" element={<PlaceholderPageMedica />} />
+            <Route path="diagnostico" element={<PlaceholderPageMedica />} />
+            <Route path="evolucion" element={<PlaceholderPageMedica />} />
+            <Route path="procedimiento" element={<PlaceholderPageMedica />} />
             <Route index element={<Navigate to="motivo-consulta" replace />} />
           </Route>
 
+          {/* --- 👇 NUEVO: Rutas Anidadas para Atención Terapéutica --- */}
+          <Route path="atencion-terapeutica/:pacienteId" element={<AtencionTerapeuticaLayout />}>
+            <Route path="motivo-consulta" element={<MotivoConsultaTerapeutica />} />
+            <Route path="anamnesis" element={<PlaceholderPageTerapeutica />} />
+            <Route path="signos-vitales" element={<PlaceholderPageTerapeutica />} />
+            <Route path="examen-fisico" element={<PlaceholderPageTerapeutica />} />
+            <Route path="examen-segmentado" element={<PlaceholderPageTerapeutica />} />
+            <Route path="problemas-objetivos" element={<PlaceholderPageTerapeutica />} />
+            <Route path="evaluacion" element={<PlaceholderPageTerapeutica />} />
+            <Route path="procedimiento" element={<PlaceholderPageTerapeutica />} />
+            <Route path="reporte" element={<PlaceholderPageTerapeutica />} />
+            <Route path="historial" element={<PlaceholderPageTerapeutica />} />
+            <Route index element={<Navigate to="motivo-consulta" replace />} />
+          </Route>
+
+          {/* Redirige /app a la página de sesión */}
           <Route index element={<Navigate to="sesion" replace />} />
         </Route>
 

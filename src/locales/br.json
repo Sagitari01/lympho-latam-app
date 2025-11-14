@@ -102,5 +102,32 @@
       "evolucion": "Evolução e Acompanhamento",
       "procedimiento": "Procedimento"
     }
+  },
+  "atencionTerapeutica": {
+    "headerTitle": "Atendimento Terapeuta/ Fisioterapeuta",
+    "terapeutaLabel": "Terapeuta/Fisioterapeuta:",
+    "btnSave": "Salvar",
+    "patientInfo": {
+      "name": "Nome",
+      "age": "Idade",
+      "sex": "Sexo",
+      "nationality": "Nacionalidade",
+      "address": "Endereço",
+      "country": "País",
+      "state": "Estado",
+      "diagnostico": "Diagnóstico ICD 10"
+    },
+    "nav": {
+      "motivo": "Motivo da Consulta",
+      "anamnesis": "Anamnese",
+      "signos": "Sinais Vitais",
+      "examenFisico": "Exame Físico",
+      "examenSegmentado": "Exame Físico Segmentado",
+      "problemas": "Problemas e Objetivos",
+      "evaluacion": "Avaliação",
+      "procedimiento": "Procedimento",
+      "reporte": "Relatório",
+      "historial": "Histórico"
+    }
   }
 }

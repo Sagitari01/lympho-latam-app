@@ -102,5 +102,32 @@
       "evolucion": "Evolución y Seguimiento",
       "procedimiento": "Procedimiento"
     }
+  },
+  "atencionTerapeutica": {
+    "headerTitle": "Atención Terapeuta/ Kinesiólogo",
+    "terapeutaLabel": "Terapeuta/Kinesiólogo:",
+    "btnSave": "Guardar",
+    "patientInfo": {
+      "name": "Nombre",
+      "age": "Edad",
+      "sex": "Sexo",
+      "nationality": "Nacionalidad",
+      "address": "Dirección",
+      "country": "País",
+      "state": "Estado",
+      "diagnostico": "Diagnostico ICD 10"
+    },
+    "nav": {
+      "motivo": "Motivo de Consulta",
+      "anamnesis": "Anamnesis",
+      "signos": "Signos Vitales",
+      "examenFisico": "Examen Físico",
+      "examenSegmentado": "Examen Físico Segmentado",
+      "problemas": "Problemas y Objetivos",
+      "evaluacion": "Evaluación",
+      "procedimiento": "Procedimiento",
+      "reporte": "Reporte",
+      "historial": "Historial"
+    }
   }
 }

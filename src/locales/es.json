@@ -124,10 +124,27 @@
       "examenFisico": "Examen Físico",
       "examenSegmentado": "Examen Físico Segmentado",
       "problemas": "Problemas y Objetivos",
-      "evaluacion": "Evaluación",
+      "evaluacionLipedema": "Evaluación Lipedema",
       "procedimiento": "Procedimiento",
       "reporte": "Reporte",
-      "historial": "Historial"
+      "historial": "Historial",
+      "seleccionarParte": "Selecciona una parte del cuerpo para añadir notas.",
+      "annotationPlaceholder": "Añadir notas para {{part}}...",
+      "ningunaParte": "Ninguna parte seleccionada"
+    },
+    "bodyParts": {
+      "head": "Cabeza",
+      "torso": "Torso",
+      "left-arm": "Brazo Izquierdo",
+      "right-arm": "Brazo Derecho",
+      "left-leg": "Pierna Izquierda",
+      "right-leg": "Pierna Derecha",
+      "head-back": "Cabeza (Posterior)",
+      "back": "Espalda",
+      "left-arm-back": "Brazo Izquierdo (Posterior)",
+      "right-arm-back": "Brazo Derecho (Posterior)",
+      "left-leg-back": "Pierna Izquierda (Posterior)",
+      "right-leg-back": "Pierna Derecha (Posterior)"
     }
   }
 }

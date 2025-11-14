@@ -7,9 +7,10 @@ function getTitleKey(pathname) {
   if (pathname.includes('anamnesis')) return 'atencionTerapeutica.nav.anamnesis';
   if (pathname.includes('signos-vitales')) return 'atencionTerapeutica.nav.signos';
   if (pathname.includes('examen-fisico')) return 'atencionTerapeutica.nav.examenFisico';
-  if (pathname.includes('examen-segmentado')) return 'atencionTerapeutica.nav.examenSegmentado';
+  // (examen-segmentado ya no usa este placeholder)
   if (pathname.includes('problemas-objetivos')) return 'atencionTerapeutica.nav.problemas';
-  if (pathname.includes('evaluacion')) return 'atencionTerapeutica.nav.evaluacion';
+  // (evaluacion ahora es evaluacion-lipedema)
+  if (pathname.includes('evaluacion-lipedema')) return 'atencionTerapeutica.nav.evaluacionLipedema';
   if (pathname.includes('procedimiento')) return 'atencionTerapeutica.nav.procedimiento';
   if (pathname.includes('reporte')) return 'atencionTerapeutica.nav.reporte';
   if (pathname.includes('historial')) return 'atencionTerapeutica.nav.historial';

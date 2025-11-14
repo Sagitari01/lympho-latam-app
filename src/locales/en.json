@@ -124,10 +124,27 @@
       "examenFisico": "Physical Exam",
       "examenSegmentado": "Segmented Physical Exam",
       "problemas": "Problems & Objectives",
-      "evaluacion": "Evaluation",
+      "evaluacionLipedema": "Lipedema Evaluation",
       "procedimiento": "Procedure",
       "reporte": "Report",
-      "historial": "History"
+      "historial": "History",
+      "seleccionarParte": "Select a body part to add notes.",
+      "annotationPlaceholder": "Add notes for {{part}}...",
+      "ningunaParte": "No part selected"
+    },
+    "bodyParts": {
+      "head": "Head",
+      "torso": "Torso",
+      "left-arm": "Left Arm",
+      "right-arm": "Right Arm",
+      "left-leg": "Left Leg",
+      "right-leg": "Right Leg",
+      "head-back": "Head (Back)",
+      "back": "Back",
+      "left-arm-back": "Left Arm (Back)",
+      "right-arm-back": "Right Arm (Back)",
+      "left-leg-back": "Left Leg (Back)",
+      "right-leg-back": "Right Leg (Back)"
     }
   }
 }

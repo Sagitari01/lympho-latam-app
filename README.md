@@ -71,15 +71,18 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 
 ### 14/11/2025
 
-- **Implementación de "Atención Terapéutica".**
-    - Se creó el segundo layout anidado (`AtencionTerapeuticaLayout.jsx`) para la ficha del kinesiólogo, reutilizando el patrón de diseño.
-    - Se añadió la nueva navegación vertical (Motivo, Anamnesis, Examen Segmentado, etc.).
-    - Se creó el CSS dedicado (`AtencionTerapeutica.css`).
-    - Se añadieron todas las traducciones (ES/EN/BR) para la nueva sección.
+- **Implementación de "Atención Terapéutica" y "Examen Segmentado".**
+    - Se creó el layout anidado (`AtencionTerapeuticaLayout.jsx`) con navegación vertical.
+    - Se implementó la página "Examen Físico Segmentado" usando un **mapa corporal SVG interactivo** (descartando librerías externas).
+    - Se añadió la lógica de React para **selección múltiple** de partes del cuerpo (highlight).
+    - La caja de anotaciones ahora muestra una lista de todas las partes seleccionadas y permite editar la anotación de la parte activa.
+    - Se añadieron todas las traducciones (ES/EN/BR) para la nueva sección, incluyendo las partes del cuerpo.
+    - Se actualizó el CSS (`AtencionTerapeutica.css`) para estilizar el nuevo layout y el mapa SVG.
     - Se actualizaron las rutas en `App.jsx` para incluir `/app/atencion-terapeutica/:pacienteId`.
 
 ### Próximos pasos
 
+- **Mejorar SVG:** Reemplazar el SVG simple del cuerpo por uno anatómicamente detallado (cuando esté disponible).
 - **Conectar Backend:** Empezar a conectar los formularios (Ingreso de Paciente, Motivo de Consulta) a un backend (Lambda + API Gateway).
 - **Base de Datos:** Definir la estructura en DynamoDB para guardar los pacientes.
 - **Datos Reales:** Reemplazar los datos *dummy* de la lista de pacientes con una llamada real a la API.

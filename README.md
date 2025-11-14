@@ -69,12 +69,22 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 - **Actualización de "Sesión de Usuario".**
     - `Bienvenida.jsx` ahora muestra una tarjeta de perfil con los datos completos del doctor (Nombre, Correo, Teléfono).
 
+### 14/11/2025
+
+- **Implementación de "Atención Terapéutica".**
+    - Se creó el segundo layout anidado (`AtencionTerapeuticaLayout.jsx`) para la ficha del kinesiólogo, reutilizando el patrón de diseño.
+    - Se añadió la nueva navegación vertical (Motivo, Anamnesis, Examen Segmentado, etc.).
+    - Se creó el CSS dedicado (`AtencionTerapeutica.css`).
+    - Se añadieron todas las traducciones (ES/EN/BR) para la nueva sección.
+    - Se actualizaron las rutas en `App.jsx` para incluir `/app/atencion-terapeutica/:pacienteId`.
+
 ### Próximos pasos
 
-- Conectar formulario de "Ingreso de Paciente" a un backend (Lambda + API Gateway).
-- Conectar "Listado de Pacientes" al backend para obtener y filtrar datos reales.
-- Maquetar las páginas de "Atención Terapéutica" (actualmente un link vacío).
-- Pruebas de despliegue en AWS (EC2 o Amplify Hosting).
+- **Conectar Backend:** Empezar a conectar los formularios (Ingreso de Paciente, Motivo de Consulta) a un backend (Lambda + API Gateway).
+- **Base de Datos:** Definir la estructura en DynamoDB para guardar los pacientes.
+- **Datos Reales:** Reemplazar los datos *dummy* de la lista de pacientes con una llamada real a la API.
+- **Maquetar "Reportes":** Diseñar la última página principal del dashboard.
+- **Despliegue:** Probar el despliegue del "build" en AWS.
 
 ---
 

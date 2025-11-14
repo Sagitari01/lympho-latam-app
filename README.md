@@ -59,8 +59,7 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
     - Se implementó la lógica para cambiar el estado de "Alta" (`true`/`false`) de un paciente.
     - Se añadió una ventana de confirmación (`window.confirm`) para validar la acción de dar de alta/readmitir.
 - **Internacionalización (i18n): Añadido Portugués de Brasil.**
-    - Se creó el archivo de traducción `br.json` (Portugués de Brasil).
-    - Se actualizó `i18n.js` para incluir el nuevo idioma (`br`).
+    - Se creó el archivo de traducción `br.json` (Portugués de Brasil) y se actualizó `i18n.js`.
     - Se añadió la biblioteca `flag-icons` para mostrar las banderas (`fi-es`, `fi-gb`, `fi-br`).
 - **Implementación de "Atención Médica" (Layout Anidado).**
     - Se corrigió la carga de datos del usuario en `App.jsx` usando `fetchUserAttributes` para obtener `name`, `phone_number`, etc.
@@ -73,11 +72,10 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 
 - **Implementación de "Atención Terapéutica" y "Examen Segmentado".**
     - Se creó el layout anidado (`AtencionTerapeuticaLayout.jsx`) con navegación vertical.
-    - Se implementó la página "Examen Físico Segmentado" usando un **mapa corporal SVG interactivo** (descartando librerías externas).
-    - Se añadió la lógica de React para **selección múltiple** de partes del cuerpo (highlight).
-    - La caja de anotaciones ahora muestra una lista de todas las partes seleccionadas y permite editar la anotación de la parte activa.
+    - Se implementó la página "Examen Físico Segmentado" usando un **mapa corporal SVG interactivo** (descartando librerías externas que fallaron en la importación).
+    - Se actualizó la lógica de React para permitir la **selección múltiple** de partes del cuerpo y la anotación unificada de todas las partes seleccionadas.
+    - Se corrigieron bugs de traducción en el menú y en el `placeholder` de anotaciones.
     - Se añadieron todas las traducciones (ES/EN/BR) para la nueva sección, incluyendo las partes del cuerpo.
-    - Se actualizó el CSS (`AtencionTerapeutica.css`) para estilizar el nuevo layout y el mapa SVG.
     - Se actualizaron las rutas en `App.jsx` para incluir `/app/atencion-terapeutica/:pacienteId`.
 
 ### Próximos pasos

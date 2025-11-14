@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, useParams, useOutletContext } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import '../styles/AtencionTerapeutica.css'; // Importamos el nuevo CSS
+import '../styles/AtencionTerapeutica.css'; 
 
 // Datos de prueba (en un futuro, esto será una llamada a la API con el ID)
 const dummyPatientsData = {
@@ -74,7 +74,7 @@ function AtencionTerapeuticaLayout() {
       {/* 2. Contenedor del Layout (2 columnas) */}
       <div className="container form-content terapeutica-layout-container">
         
-        {/* 2a. Navegación Vertical */}
+        {/* 2a. Navegación Vertical --- 👇 CAMBIOS AQUÍ --- */}
         <aside className="terapeutica-nav">
           <ul className="terapeutica-nav-list">
             <li><NavLink to="motivo-consulta" className="nav-link">{t('atencionTerapeutica.nav.motivo')}</NavLink></li>
@@ -83,7 +83,8 @@ function AtencionTerapeuticaLayout() {
             <li><NavLink to="examen-fisico" className="nav-link">{t('atencionTerapeutica.nav.examenFisico')}</NavLink></li>
             <li><NavLink to="examen-segmentado" className="nav-link">{t('atencionTerapeutica.nav.examenSegmentado')}</NavLink></li>
             <li><NavLink to="problemas-objetivos" className="nav-link">{t('atencionTerapeutica.nav.problemas')}</NavLink></li>
-            <li><NavLink to="evaluacion" className="nav-link">{t('atencionTerapeutica.nav.evaluacion')}</NavLink></li>
+            {/* --- 👇 CORRECCIÓN DEL LINK Y LA LLAVE --- */}
+            <li><NavLink to="evaluacion-lipedema" className="nav-link">{t('atencionTerapeutica.nav.evaluacionLipedema')}</NavLink></li>
             <li><NavLink to="procedimiento" className="nav-link">{t('atencionTerapeutica.nav.procedimiento')}</NavLink></li>
             <li><NavLink to="reporte" className="nav-link">{t('atencionTerapeutica.nav.reporte')}</NavLink></li>
             <li><NavLink to="historial" className="nav-link">{t('atencionTerapeutica.nav.historial')}</NavLink></li>
@@ -105,7 +106,6 @@ function AtencionTerapeuticaLayout() {
             <p className="info-diag"><strong>{t('atencionTerapeutica.patientInfo.diagnostico')}:</strong> {patient.diagnostico}</p>
           </div>
 
-          {/* Marcador para las sub-páginas (Motivo, Anamnesis, etc.) */}
           <Outlet />
           
         </main>

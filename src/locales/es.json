@@ -130,7 +130,8 @@
       "historial": "Historial",
       "seleccionarParte": "Selecciona una parte del cuerpo para añadir notas.",
       "annotationPlaceholder": "Añadir notas para {{part}}...",
-      "ningunaParte": "Ninguna parte seleccionada"
+      "ningunaParte": "Ninguna parte seleccionada",
+      "multipleValues": "Valores múltiples. Escribe aquí para sobrescribir todas las partes seleccionadas."
     },
     "bodyParts": {
       "head": "Cabeza",

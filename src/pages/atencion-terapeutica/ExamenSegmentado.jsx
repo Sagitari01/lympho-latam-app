@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 import { useTranslation } from 'react-i18next';
 // No se importa ninguna librería de "body"
 
@@ -115,32 +115,27 @@ function ExamenSegmentado() {
   const { t } = useTranslation();
 
   // --- ESTADOS ---
-  const [highlightedParts, setHighlightedParts] = useState([]); // Array de todas las partes verdes
-  const [activeAnnotationPart, setActiveAnnotationPart] = useState(null); // La última parte clickeada
-  const [annotations, setAnnotations] = useState({
-    'right-arm-back': 'Anotación de prueba para el brazo derecho.',
-  });
+  const [highlightedParts, setHighlightedParts] = useState([]);
+  const [activeAnnotationPart, setActiveAnnotationPart] = useState(null);
+  
+  // --- 👇 CAMBIO AQUÍ: Objeto de anotaciones vacío ---
+  const [annotations, setAnnotations] = useState({});
 
-  // --- 👇 LÓGICA DE CLIC ACTUALIZADA ---
+  // --- LÓGICA DE CLIC ---
   const handlePartClick = (partId) => {
     let newHighlightedParts;
     let newActivePart;
 
     if (highlightedParts.includes(partId)) {
-      // --- DESELECCIONANDO ---
       newHighlightedParts = highlightedParts.filter(p => p !== partId);
-      // Si la parte que deseleccionamos era la activa,
-      // ponemos como activa la última de la lista (o null si la lista está vacía)
       if (activeAnnotationPart === partId) {
         newActivePart = newHighlightedParts.length > 0 ? newHighlightedParts[newHighlightedParts.length - 1] : null;
       } else {
-        newActivePart = activeAnnotationPart; // La parte activa sigue siendo otra
+        newActivePart = activeAnnotationPart;
       }
-
     } else {
-      // --- SELECCIONANDO ---
       newHighlightedParts = [...highlightedParts, partId];
-      newActivePart = partId; // La parte nueva es la activa
+      newActivePart = partId;
     }
     
     setHighlightedParts(newHighlightedParts);
@@ -149,25 +144,50 @@ function ExamenSegmentado() {
 
   const handleAnnotationChange = (e) => {
     const text = e.target.value;
-    setAnnotations(prevAnnotations => ({
-      ...prevAnnotations,
-      [activeAnnotationPart]: text, // Guarda la anotación para la parte activa
-    }));
+    if(activeAnnotationPart) {
+      setAnnotations(prevAnnotations => ({
+        ...prevAnnotations,
+        [activeAnnotationPart]: text,
+      }));
+    }
   };
   
-  // La anotación que se muestra se basa en la 'activeAnnotationPart'
-  const currentAnnotation = annotations[activeAnnotationPart] || '';
+  const currentAnnotation = activeAnnotationPart ? annotations[activeAnnotationPart] || '' : '';
   
   const getSelectedPartName = (partId) => {
     if (!partId) return '...';
     return t(`atencionTerapeutica.bodyParts.${partId}`, partId.replace('-', ' ').toUpperCase());
   };
 
-  // --- 👇 LÓGICA DE RENDERIZADO ACTUALIZADA ---
-  // Genera el string para el label, ej: "CABEZA, TORSO"
-  const selectedPartNames = highlightedParts.length > 0 
-    ? highlightedParts.map(partId => getSelectedPartName(partId)).join(', ')
-    : t('atencionTerapeutica.nav.ningunaParte'); // Nueva llave JSON
+  // --- LÓGICA DE RENDERIZADO ---
+  const selectedPartNames = useMemo(() => {
+    if (highlightedParts.length === 0) {
+      return t('atencionTerapeutica.nav.ningunaParte');
+    }
+    return highlightedParts
+      .map(partId => getSelectedPartName(partId))
+      .join(', ');
+  }, [highlightedParts, t, getSelectedPartName]); // 't' y 'getSelectedPartName' añadidas como dependencias
+
+
+  const placeholderText = useMemo(() => {
+    if (highlightedParts.length === 0) {
+      return '';
+    }
+    if (currentAnnotation) {
+      return '';
+    }
+    if (highlightedParts.length > 1 && !currentAnnotation && activeAnnotationPart) {
+      return t('atencionTerapeutica.nav.multipleValues');
+    }
+    // Añadimos 'activeAnnotationPart' para asegurarnos de que existe
+    if(activeAnnotationPart) {
+      return t('atencionTerapeutica.nav.annotationPlaceholder', { part: getSelectedPartName(activeAnnotationPart) });
+    }
+    return '';
+  
+  }, [highlightedParts, currentAnnotation, activeAnnotationPart, t, getSelectedPartName]); // 't' y 'getSelectedPartName' añadidas
+
 
   return (
     <div className="subpage-content">
@@ -179,26 +199,23 @@ function ExamenSegmentado() {
       <div className="segmentado-container">
         
         <div className="body-map-container">
-          {/* Pasa el array de partes resaltadas */}
           <BodyFront highlightedParts={highlightedParts} onClick={handlePartClick} />
           <BodyBack highlightedParts={highlightedParts} onClick={handlePartClick} />
         </div>
 
-        {/* Columna 2: El cuadro de anotación */}
         <div className="annotation-container">
           
-          {/* 1. El Label ahora muestra TODAS las partes seleccionadas */}
           <label htmlFor="annotation-text">
             {selectedPartNames}:
           </label>
 
-          {/* 2. El Textarea solo aparece si hay una PARTE ACTIVA para editar */}
-          {activeAnnotationPart ? (
+          {highlightedParts.length > 0 ? (
             <textarea 
               id="annotation-text"
               value={currentAnnotation}
               onChange={handleAnnotationChange}
-              placeholder={t('atencionTerapeutica.nav.annotationPlaceholder', { part: getSelectedPartName(activeAnnotationPart) })}
+              placeholder={placeholderText}
+              disabled={!activeAnnotationPart}
             />
           ) : (
             <p className="annotation-placeholder">

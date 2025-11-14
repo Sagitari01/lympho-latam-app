@@ -31,7 +31,7 @@
     "navReports": "Relatórios",
     "pageUnderConstruction": "Página em construção",
     "contentPatientList": "Este é o espaço para o conteúdo da \"Lista de Pacientes\".",
-    "contentReports": "Este é o espaço para o conteúdo de \"Relatórios\".",
+    "contentReports": "Este é o espaço para o conteúdo de \"Reportes\".",
     "intakeTitle": "Entrada de Paciente",
     "searchPlaceholder": "Buscar paciente...",
     "runSelect": "ID",
@@ -120,7 +120,7 @@
     "nav": {
       "motivo": "Motivo da Consulta",
       "anamnesis": "Anamnese",
-      "signos": "Sinais Vitais",
+      "signos": "Sinais VitBrazis",
       "examenFisico": "Exame Físico",
       "examenSegmentado": "Exame Físico Segmentado",
       "problemas": "Problemas e Objetivos",
@@ -130,7 +130,8 @@
       "historial": "Histórico",
       "seleccionarParte": "Selecione uma parte do corpo para adicionar notas.",
       "annotationPlaceholder": "Adicionar notas para {{part}}...",
-      "ningunaParte": "Nenhuma parte selecionada"
+      "ningunaParte": "Nenhuma parte selecionada",
+      "multipleValues": "Valores múltiplos. Escreva aqui para sobrescrever todas as partes selecionadas."
     },
     "bodyParts": {
       "head": "Cabeça",

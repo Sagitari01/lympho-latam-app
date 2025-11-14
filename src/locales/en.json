@@ -130,7 +130,8 @@
       "historial": "History",
       "seleccionarParte": "Select a body part to add notes.",
       "annotationPlaceholder": "Add notes for {{part}}...",
-      "ningunaParte": "No part selected"
+      "ningunaParte": "No part selected",
+      "multipleValues": "Multiple values. Type here to overwrite all selected parts."
     },
     "bodyParts": {
       "head": "Head",

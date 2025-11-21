@@ -20,8 +20,12 @@ import PlaceholderPageMedica from "./pages/atencion-medica/PlaceholderPage";
 // Páginas de Atención Terapéutica
 import AtencionTerapeuticaLayout from "./layouts/AtencionTerapeuticaLayout";
 import MotivoConsultaTerapeutica from "./pages/atencion-terapeutica/MotivoConsulta";
-// --- 👇 CAMBIO: Importamos la nueva página ---
 import ExamenSegmentado from "./pages/atencion-terapeutica/ExamenSegmentado"; 
+import Anamnesis from "./pages/atencion-terapeutica/Anamnesis"; 
+import ProblemasObjetivos from "./pages/atencion-terapeutica/ProblemasObjetivos";
+import EvaluacionLipedema from "./pages/atencion-terapeutica/EvaluacionLipedema";
+// 👇 1. IMPORTAR EL NUEVO COMPONENTE
+import ExamenFisico from "./pages/atencion-terapeutica/ExamenFisico";
 import PlaceholderPageTerapeutica from "./pages/atencion-terapeutica/PlaceholderPage";
 
 // --- Componente App ---
@@ -114,17 +118,16 @@ function App() {
             <Route index element={<Navigate to="motivo-consulta" replace />} />
           </Route>
 
-          {/* --- 👇 CAMBIO: Rutas Anidadas para Atención Terapéutica --- */}
+          {/* --- Rutas Anidadas para Atención Terapéutica --- */}
           <Route path="atencion-terapeutica/:pacienteId" element={<AtencionTerapeuticaLayout />}>
             <Route path="motivo-consulta" element={<MotivoConsultaTerapeutica />} />
-            <Route path="anamnesis" element={<PlaceholderPageTerapeutica />} />
+            <Route path="anamnesis" element={<Anamnesis />} /> 
             <Route path="signos-vitales" element={<PlaceholderPageTerapeutica />} />
-            <Route path="examen-fisico" element={<PlaceholderPageTerapeutica />} />
-            {/* Ruta para el nuevo componente */}
+            {/* 👇 2. USAR EL NUEVO COMPONENTE EN LA RUTA */}
+            <Route path="examen-fisico" element={<ExamenFisico />} />
             <Route path="examen-segmentado" element={<ExamenSegmentado />} /> 
-            <Route path="problemas-objetivos" element={<PlaceholderPageTerapeutica />} />
-            {/* Ruta actualizada */}
-            <Route path="evaluacion-lipedema" element={<PlaceholderPageTerapeutica />} /> 
+            <Route path="problemas-objetivos" element={<ProblemasObjetivos />} />
+            <Route path="evaluacion-lipedema" element={<EvaluacionLipedema />} /> 
             <Route path="procedimiento" element={<PlaceholderPageTerapeutica />} />
             <Route path="reporte" element={<PlaceholderPageTerapeutica />} />
             <Route path="historial" element={<PlaceholderPageTerapeutica />} />

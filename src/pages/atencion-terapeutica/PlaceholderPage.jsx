@@ -4,12 +4,9 @@ import { useLocation } from 'react-router-dom';
 
 // Helper para obtener un título legible desde la ruta
 function getTitleKey(pathname) {
-  if (pathname.includes('anamnesis')) return 'atencionTerapeutica.nav.anamnesis';
   if (pathname.includes('signos-vitales')) return 'atencionTerapeutica.nav.signos';
   if (pathname.includes('examen-fisico')) return 'atencionTerapeutica.nav.examenFisico';
-  // (examen-segmentado ya no usa este placeholder)
-  if (pathname.includes('problemas-objetivos')) return 'atencionTerapeutica.nav.problemas';
-  // (evaluacion ahora es evaluacion-lipedema)
+  // 'problemas-objetivos' ELIMINADO DE AQUÍ
   if (pathname.includes('evaluacion-lipedema')) return 'atencionTerapeutica.nav.evaluacionLipedema';
   if (pathname.includes('procedimiento')) return 'atencionTerapeutica.nav.procedimiento';
   if (pathname.includes('reporte')) return 'atencionTerapeutica.nav.reporte';

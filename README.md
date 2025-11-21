@@ -59,7 +59,8 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
     - Se implementó la lógica para cambiar el estado de "Alta" (`true`/`false`) de un paciente.
     - Se añadió una ventana de confirmación (`window.confirm`) para validar la acción de dar de alta/readmitir.
 - **Internacionalización (i18n): Añadido Portugués de Brasil.**
-    - Se creó el archivo de traducción `br.json` (Portugués de Brasil) y se actualizó `i18n.js`.
+    - Se creó el archivo de traducción `br.json` (Portugués de Brasil).
+    - Se actualizó `i18n.js` para incluir el nuevo idioma (`br`).
     - Se añadió la biblioteca `flag-icons` para mostrar las banderas (`fi-es`, `fi-gb`, `fi-br`).
 - **Implementación de "Atención Médica" (Layout Anidado).**
     - Se corrigió la carga de datos del usuario en `App.jsx` usando `fetchUserAttributes` para obtener `name`, `phone_number`, etc.
@@ -70,13 +71,22 @@ Aplicación frontend creada con React + Vite para gestión y visualización de d
 
 ### 14/11/2025
 
-- **Implementación de "Atención Terapéutica" y "Examen Segmentado".**
-    - Se creó el layout anidado (`AtencionTerapeuticaLayout.jsx`) con navegación vertical.
-    - Se implementó la página "Examen Físico Segmentado" usando un **mapa corporal SVG interactivo** (descartando librerías externas que fallaron en la importación).
-    - Se actualizó la lógica de React para permitir la **selección múltiple** de partes del cuerpo y la anotación unificada de todas las partes seleccionadas.
-    - Se corrigieron bugs de traducción en el menú y en el `placeholder` de anotaciones.
-    - Se añadieron todas las traducciones (ES/EN/BR) para la nueva sección, incluyendo las partes del cuerpo.
-    - Se actualizaron las rutas en `App.jsx` para incluir `/app/atencion-terapeutica/:pacienteId`.
+- **Desarrollo de Sección "Atención Terapéutica".**
+    - **Layout y Navegación:** Se creó `AtencionTerapeuticaLayout.jsx` con navegación lateral específica y CSS dedicado.
+    - **Página "Examen Físico Segmentado":**
+        - Se implementó un mapa corporal interactivo usando SVGs personalizados.
+        - Funcionalidad de selección múltiple de partes del cuerpo.
+        - Sistema de anotaciones dinámico vinculado a las partes seleccionadas.
+    - **Página "Anamnesis":**
+        - Formulario completo con campos de texto, grillas de checkboxes y preguntas de selección (Sí/No).
+    - **Página "Problemas y Objetivos":**
+        - Listas de selección múltiple para problemas y objetivos a corto/largo plazo.
+    - **Página "Evaluación Lipedema":**
+        - Implementación de Escala de Dolor interactiva (selección única).
+    - **Página "Examen Físico":**
+        - Tabla de Hinchazón/Pitting.
+        - Botones con modales informativos para la "Calculadora" y "Evaluación Oncológica".
+    - **Traducciones:** Se completaron todas las traducciones (ES/EN/BR) para las nuevas páginas.
 
 ### Próximos pasos
 

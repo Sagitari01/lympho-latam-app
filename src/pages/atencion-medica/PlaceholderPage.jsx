@@ -1,16 +1,15 @@
 import React from 'react';
-// 👇 CAMBIO AQUÍ: Se corrigió la importación
 import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 
 // Helper para obtener un título legible desde la ruta
 function getTitleKey(pathname) {
-  if (pathname.includes('anamnesis')) return 'atencionMedica.nav.anamnesis';
-  if (pathname.includes('signos-vitales')) return 'atencionMedica.nav.signos';
-  if (pathname.includes('examen-fisico')) return 'atencionMedica.nav.examen';
+  // if (pathname.includes('anamnesis')) return 'atencionMedica.nav.anamnesis';
+  // if (pathname.includes('signos-vitales')) return 'atencionMedica.nav.signos';
+  // if (pathname.includes('examen-fisico')) return 'atencionMedica.nav.examen';
   if (pathname.includes('diagnostico')) return 'atencionMedica.nav.diagnostico';
   if (pathname.includes('evolucion')) return 'atencionMedica.nav.evolucion';
-  if (pathname.includes('procedimiento')) return 'atencionMedica.nav.procedimiento';
+  // if (pathname.includes('procedimiento')) return 'atencionMedica.nav.procedimiento'; // <--- COMENTADO
   return 'dashboard.pageUnderConstruction';
 }
 

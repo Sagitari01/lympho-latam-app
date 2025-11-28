@@ -17,7 +17,6 @@
     font-size: 0.9rem;
 }
 
-/* --- 👇 CAMBIO: Estilo para el nombre del médico --- */
 .medical-subheader .medico-name {
     padding: 6px 10px;
     border: 1px solid #b0c4de;
@@ -145,4 +144,491 @@
     font-size: 1rem;
     font-family: Arial, sans-serif;
     resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+.empty-content-placeholder {
+    padding: 60px 20px;
+    text-align: center;
+    color: #6b7a9b;
+}
+
+/* --- Estilos para Formularios (Anamnesis, etc) --- */
+
+.anamnesis-form .form-section {
+    margin-bottom: 25px;
+}
+
+.anamnesis-form .form-section h3 {
+    font-size: 1.2rem;
+    color: #4a6fa5;
+    border-bottom: 2px solid #c9d4f0;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.input-group label {
+    flex-basis: 180px;
+    flex-shrink: 0;
+    font-weight: 600;
+    padding-right: 10px;
+}
+
+.input-group input[type="text"] {
+    flex-grow: 1;
+    padding: 8px 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    background-color: #d8e2f3;
+}
+
+.checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas */
+    gap: 10px 20px;
+}
+
+.checkbox-group {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 8px;
+    width: 18px;
+    height: 18px;
+    margin-top: 2px;
+}
+
+.checkbox-group label {
+    font-weight: 500;
+    color: #333;
+    line-height: 1.4;
+}
+
+.other-group {
+    display: flex;
+    align-items: flex-start;
+    margin-top: 10px;
+}
+
+.other-group label {
+    flex-basis: 180px;
+    flex-shrink: 0;
+    font-weight: 600;
+    padding-right: 10px;
+    margin-top: 8px;
+}
+
+.other-group textarea {
+    flex-grow: 1;
+    height: 80px;
+    padding: 8px 10px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    background-color: #d8e2f3;
+    resize: vertical;
+}
+
+/* --- Estilos para Signos Vitales --- */
+
+.vitals-wrapper {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 950px; 
+    margin: 0 auto;
+}
+
+.vitals-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr); 
+    gap: 15px;
+    align-items: start;
+}
+
+.vital-box {
+    background-color: #d1f4f7;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.vital-box-large {
+    grid-column: span 3;
+}
+
+.vital-box-medium {
+    grid-column: span 2;
+}
+
+.vital-header {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 6px;
+    display: block;
+    font-size: 0.9rem;
+    text-align: center;
+    background-color: rgba(255,255,255,0.3);
+    padding: 2px;
+    border-radius: 3px;
+}
+
+.vital-input-container input {
+    width: 100%;
+    padding: 4px 6px;
+    border: 1px solid #b0c4de;
+    border-radius: 3px;
+    margin-top: 2px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.temp-grid {
+    display: grid;
+    grid-template-rows: auto auto auto;
+    gap: 6px;
+}
+
+.temp-row {
+    display: grid;
+    grid-template-columns: 80px 1fr;
+    gap: 10px;
+    align-items: center;
+}
+
+.temp-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #444;
+    background-color: #e1e1e1;
+    padding: 3px 6px;
+    text-align: center;
+}
+
+.bp-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.bp-col {
+    display: flex;
+    flex-direction: column;
+}
+
+.bp-label {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-bottom: 2px;
+    color: #444;
+    background-color: #e1e1e1;
+    padding: 2px;
+}
+
+.save-btn-container-vitals {
+    margin-top: 20px;
+    display: flex;
+    justify-content: flex-end;
+    grid-column: span 6;
+}
+
+.save-btn-vitals {
+    background-color: #b0e0e6;
+    border: none;
+    padding: 8px 30px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #333;
+    transition: background 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.save-btn-vitals:hover {
+    background-color: #9ad0d6;
+}
+
+/* --- Estilos para Examen Físico Médico --- */
+
+.medical-exam-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+}
+
+.exam-top-panel {
+    display: flex;
+    gap: 30px;
+}
+
+.exam-body-col {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #fff;
+    border: 1px solid #c9d4f0;
+    border-radius: 8px;
+    padding: 10px;
+}
+
+.exam-options-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.exam-subtitle {
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    display: block;
+    font-size: 0.95rem;
+}
+
+.options-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 10px;
+}
+
+.oncology-btn-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+}
+
+.oncology-btn {
+    background-color: #b0e0e6;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    color: #2c3e50;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.exam-bottom-panel {
+    width: 100%;
+}
+
+.exam-bottom-panel textarea {
+    width: 100%;
+    height: 150px;
+    border: 1px solid #b0c4de;
+    border-radius: 5px;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    resize: vertical;
+}
+
+.body-part {
+    fill: #ffffff;
+    stroke: #000000;
+    stroke-width: 0.5;
+    cursor: pointer;
+    transition: fill 0.2s;
+}
+.body-part.selected {
+    fill: limegreen;
+}
+.body-part:hover {
+    fill: #e0e0e0;
+}
+.body-part.selected:hover {
+    fill: #2eb84b;
+}
+
+/* Modal styles (reutilizados) */
+.modal-overlay {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 8px;
+    max-width: 500px;
+    width: 90%;
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+}
+
+/* --- Estilos para Modal Oncológico Grande --- */
+
+.modal-content-large {
+    background-color: white;
+    padding: 0;
+    border-radius: 8px;
+    max-width: 900px;
+    width: 95%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+    display: flex;
+    flex-direction: column;
+}
+
+.modal-header {
+    background-color: #fff;
+    border: 2px solid #b0c4de;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+.modal-header-controls {
+    display: flex;
+    align-items: stretch;
+    flex: 1;
+    margin-right: 20px;
+}
+
+.type-label {
+    background-color: #b4c4d4;
+    color: #000;
+    font-weight: bold;
+    padding: 10px 20px;
+    display: flex;
+    align-items: center;
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+}
+
+.eval-selector {
+    flex: 1;
+    padding: 10px;
+    font-size: 1rem;
+    border: none;
+    background-color: #d0dae6;
+    color: #333;
+    outline: none;
+}
+
+.modal-close-icon {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    color: #666;
+    cursor: pointer;
+    padding: 0 10px;
+}
+
+.modal-body {
+    padding: 20px;
+}
+
+.eval-form-container {
+    background-color: #fff;
+}
+
+.eval-title-inner {
+    background-color: #b4c4d4;
+    color: #000;
+    padding: 12px;
+    margin-top: 0;
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    text-align: left;
+}
+
+.eval-grid-2col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+}
+
+.eval-section-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 4px;
+}
+
+.eval-actions {
+    margin-top: 30px;
+    text-align: right;
+}
+
+.save-button-modal {
+    background-color: #b0e0e6;
+    border: none;
+    padding: 10px 40px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #333;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.save-button-modal:hover {
+    background-color: #9ad0d6;
+}
+
+/* --- 👇 SECCIÓN AÑADIDA: Estilos para Procedimiento --- */
+
+.procedure-container {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    gap: 30px;
+    align-items: start;
+}
+
+.procedure-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+    cursor: pointer;
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    background-color: #fcfcfc;
+}
+
+.procedure-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+    background-color: #f0f8ff;
+}
+
+.procedure-title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+    text-align: center;
+}
+
+.procedure-icon {
+    font-size: 4rem; /* Icono grande */
+    color: #4a6fa5;
 }

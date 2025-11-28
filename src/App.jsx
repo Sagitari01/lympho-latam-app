@@ -15,6 +15,10 @@ import Reportes from "./pages/dashboard/Reportes";
 // Páginas de Atención Médica
 import AtencionMedicaLayout from "./layouts/AtencionMedicaLayout";
 import MotivoConsultaMedica from "./pages/atencion-medica/MotivoConsulta";
+import AnamnesisMedica from "./pages/atencion-medica/Anamnesis"; 
+import SignosVitales from "./pages/atencion-medica/SignosVitales"; 
+import ExamenFisicoMedica from "./pages/atencion-medica/ExamenFisico"; 
+import ProcedimientoMedica from "./pages/atencion-medica/Procedimiento"; // <--- IMPORTAR AQUÍ
 import PlaceholderPageMedica from "./pages/atencion-medica/PlaceholderPage";
 
 // Páginas de Atención Terapéutica
@@ -24,7 +28,6 @@ import ExamenSegmentado from "./pages/atencion-terapeutica/ExamenSegmentado";
 import Anamnesis from "./pages/atencion-terapeutica/Anamnesis"; 
 import ProblemasObjetivos from "./pages/atencion-terapeutica/ProblemasObjetivos";
 import EvaluacionLipedema from "./pages/atencion-terapeutica/EvaluacionLipedema";
-// 👇 1. IMPORTAR EL NUEVO COMPONENTE
 import ExamenFisico from "./pages/atencion-terapeutica/ExamenFisico";
 import PlaceholderPageTerapeutica from "./pages/atencion-terapeutica/PlaceholderPage";
 
@@ -109,12 +112,12 @@ function App() {
           {/* Rutas Anidadas para Atención Médica */}
           <Route path="atencion-medica/:pacienteId" element={<AtencionMedicaLayout />}>
             <Route path="motivo-consulta" element={<MotivoConsultaMedica />} />
-            <Route path="anamnesis" element={<PlaceholderPageMedica />} />
-            <Route path="signos-vitales" element={<PlaceholderPageMedica />} />
-            <Route path="examen-fisico" element={<PlaceholderPageMedica />} />
+            <Route path="anamnesis" element={<AnamnesisMedica />} /> 
+            <Route path="signos-vitales" element={<SignosVitales />} />
+            <Route path="examen-fisico" element={<ExamenFisicoMedica />} />
             <Route path="diagnostico" element={<PlaceholderPageMedica />} />
             <Route path="evolucion" element={<PlaceholderPageMedica />} />
-            <Route path="procedimiento" element={<PlaceholderPageMedica />} />
+            <Route path="procedimiento" element={<ProcedimientoMedica />} /> {/* <--- USAR AQUÍ */}
             <Route index element={<Navigate to="motivo-consulta" replace />} />
           </Route>
 
@@ -123,7 +126,6 @@ function App() {
             <Route path="motivo-consulta" element={<MotivoConsultaTerapeutica />} />
             <Route path="anamnesis" element={<Anamnesis />} /> 
             <Route path="signos-vitales" element={<PlaceholderPageTerapeutica />} />
-            {/* 👇 2. USAR EL NUEVO COMPONENTE EN LA RUTA */}
             <Route path="examen-fisico" element={<ExamenFisico />} />
             <Route path="examen-segmentado" element={<ExamenSegmentado />} /> 
             <Route path="problemas-objetivos" element={<ProblemasObjetivos />} />

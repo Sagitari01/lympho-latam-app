@@ -1,57 +1,17 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import { BodyFront, BodyBack } from '../../components/BodyMap';
 
-// Componente reutilizable para Checkbox
 const CheckboxItem = ({ labelKey }) => {
   const { t } = useTranslation();
   return (
     <div className="checkbox-group">
       <input type="checkbox" id={labelKey} />
-      {/* Usamos t() para traducir la etiqueta */}
       <label htmlFor={labelKey}>{t(labelKey)}</label>
     </div>
   );
 };
 
-// --- COMPONENTE SVG DEL CUERPO (Versión Visual) ---
-const BodySVG = ({ highlightedParts, onClick, isBackView = false }) => {
-  
-  const getClass = (baseId) => {
-    const finalId = isBackView ? `${baseId}-back` : baseId;
-    return `body-part ${highlightedParts.includes(finalId) ? 'selected' : ''}`;
-  };
-
-  const handleClick = (e) => {
-    const baseId = e.currentTarget.id;
-    const finalId = isBackView ? `${baseId}-back` : baseId;
-    onClick(finalId);
-  };
-
-  const interactiveStyle = { fill: "#ffffff", stroke: "#000000", strokeWidth: "1", cursor: "pointer" };
-
-  return (
-    <svg
-      className="body-map-svg"
-      viewBox="0 0 200 450"
-      xmlns="http://www.w3.org/2000/svg"
-      style={isBackView ? { transform: 'scaleX(-1)' } : {}}
-    >
-      <title>Cuerpo Humano</title>
-      {/* Cabeza */}
-      <path id="head" className={getClass('head')} onClick={handleClick} d="M100,60 C80,60 70,80 70,100 C70,120 80,140 100,140 C120,140 130,120 130,100 C130,80 120,60 100,60z" />
-      {/* Torso */}
-      <path id="torso" className={getClass('torso')} onClick={handleClick} d="M80,142 L120,142 L125,250 L75,250 L80,142z" />
-      {/* Brazos */}
-      <path id="left-arm" className={getClass('left-arm')} onClick={handleClick} d="M74,145 L64,150 L50,280 L60,280 L74,145z" />
-      <path id="right-arm" className={getClass('right-arm')} onClick={handleClick} d="M126,145 L136,150 L150,280 L140,280 L126,145z" />
-      {/* Piernas */}
-      <path id="left-leg" className={getClass('left-leg')} onClick={handleClick} d="M75,252 L95,252 L90,420 L70,420 L75,252z" />
-      <path id="right-leg" className={getClass('right-leg')} onClick={handleClick} d="M105,252 L125,252 L130,420 L110,420 L105,252z" />
-    </svg>
-  );
-};
-
-// --- COMPONENTE MODAL ONCOLÓGICO ---
 const OncologicalModalContent = ({ onClose }) => {
   const { t } = useTranslation();
   const [selectedEvaluation, setSelectedEvaluation] = useState('gine');
@@ -60,16 +20,13 @@ const OncologicalModalContent = ({ onClose }) => {
     setSelectedEvaluation(e.target.value);
   };
 
-  // Renderiza el cuestionario de Cáncer Ginecológico
   const renderGine = () => (
     <div className="eval-form-container">
       <h3 className="eval-title-inner">{t('evaluacionOncologica.gine.titulo')}</h3>
       
       <div className="eval-grid-2col">
-        {/* Columna 1 */}
         <div>
           <h4 className="eval-section-title">{t('evaluacionOncologica.gine.abdominal')}</h4>
-          {/* Aquí usamos las llaves de traducción correctas */}
           <CheckboxItem labelKey="evaluacionOncologica.gine.pesadez" />
           <CheckboxItem labelKey="evaluacionOncologica.gine.hinchazon" />
           <CheckboxItem labelKey="evaluacionOncologica.gine.firmeza" />
@@ -84,7 +41,6 @@ const OncologicalModalContent = ({ onClose }) => {
           <CheckboxItem labelKey="evaluacionOncologica.gine.dolor" />
         </div>
 
-        {/* Columna 2 */}
         <div>
           <h4 className="eval-section-title">{t('evaluacionOncologica.gine.genital')}</h4>
           <CheckboxItem labelKey="evaluacionOncologica.gine.intestinal" />
@@ -142,18 +98,27 @@ const OncologicalModalContent = ({ onClose }) => {
   );
 };
 
+// Wrapper para el SVG
+const BodySVG = ({ highlightedParts, onClick, isBackView = false }) => {
+  return (
+    <div style={isBackView ? { transform: 'scaleX(-1)' } : {}}>
+      {isBackView ? (
+        <BodyBack highlightedParts={highlightedParts} onClick={onClick} />
+      ) : (
+        <BodyFront highlightedParts={highlightedParts} onClick={onClick} />
+      )}
+    </div>
+  );
+};
 
 function ExamenFisicoMedica() {
   const { t } = useTranslation();
   
-  // --- Estados para la lógica de anotaciones (RECUPERADOS) ---
   const [highlightedParts, setHighlightedParts] = useState([]);
   const [annotations, setAnnotations] = useState({});
-  const [notes, setNotes] = useState(""); // Nota temporal del textarea
-  
+  const [notes, setNotes] = useState(""); 
   const [showModal, setShowModal] = useState(false);
 
-  // --- Lógica de Clic (Igual que ExamenSegmentado) ---
   const handlePartClick = (partId) => {
     if (highlightedParts.includes(partId)) {
       setHighlightedParts(prev => prev.filter(p => p !== partId));
@@ -162,12 +127,9 @@ function ExamenFisicoMedica() {
     }
   };
 
-  // --- Lógica de Texto (Igual que ExamenSegmentado) ---
   const handleAnnotationChange = (e) => {
     const text = e.target.value;
-    setNotes(text); // Actualiza el textarea visualmente
-
-    // Guarda la nota para TODAS las partes seleccionadas
+    setNotes(text);
     setAnnotations(prevAnnotations => {
       const newAnnotations = { ...prevAnnotations };
       highlightedParts.forEach(partId => {
@@ -177,29 +139,34 @@ function ExamenFisicoMedica() {
     });
   };
   
-  // Visualización de Texto: Si hay selección, muestra la nota de la primera parte
   const currentAnnotation = useMemo(() => {
     if (highlightedParts.length === 0) return '';
-    
-    // Si todas tienen la misma nota, muéstrala. Si no, vacío (para evitar conflictos).
     const firstNote = annotations[highlightedParts[0]] || '';
     const allHaveSameNote = highlightedParts.every(partId => (annotations[partId] || '') === firstNote);
-    
     return allHaveSameNote ? firstNote : ''; 
   }, [highlightedParts, annotations]);
 
-  // Sincronizar el estado 'notes' con la selección
-  React.useEffect(() => {
+  useEffect(() => {
       setNotes(currentAnnotation);
-  }, [currentAnnotation]);
+  }, [currentAnnotation, highlightedParts]);
 
-
-  // Función para obtener nombre legible
   const getSelectedPartName = (partId) => {
     if (!partId) return '...';
-    const baseId = partId.replace('-back', '');
-    const name = t(`atencionTerapeutica.bodyParts.${baseId}`, baseId);
-    return partId.includes('-back') ? `${name} (${t('atencionTerapeutica.bodyParts.posterior', 'Posterior')})` : name;
+    // Si termina en _Posterior o _front, limpiamos el ID base
+    const baseId = partId.replace('_Posterior', '').replace('_front', '');
+    
+    // Intentamos traducir
+    const translationKey = `atencionTerapeutica.bodyParts.${baseId}`;
+    const translated = t(translationKey);
+    
+    // Fallback si la traducción falla
+    const finalName = translated !== translationKey ? translated : baseId;
+
+    if (partId.includes('_Posterior')) {
+        return `${finalName} (${t('atencionTerapeutica.bodyParts.posterior', 'Posterior')})`;
+    }
+    // IMPORTANTE: Para la parte frontal, devolvemos solo el nombre (sin "Anterior" en el texto del área) o con si prefieres
+    return finalName; 
   };
 
   const selectedPartNames = useMemo(() => {
@@ -211,7 +178,7 @@ function ExamenFisicoMedica() {
 
   const placeholderText = useMemo(() => {
     if (highlightedParts.length === 0) return '';
-    // Si hay varias partes con notas diferentes
+    if (currentAnnotation) return '';
     if (highlightedParts.length > 1 && !currentAnnotation) {
       return t('atencionTerapeutica.nav.multipleValues');
     }
@@ -221,7 +188,6 @@ function ExamenFisicoMedica() {
     return '';
   }, [highlightedParts, currentAnnotation, t]);
 
-
   return (
     <div className="subpage-content">
       <div className="subpage-header">
@@ -230,22 +196,18 @@ function ExamenFisicoMedica() {
       </div>
 
       <div className="medical-exam-container">
-        
-        {/* Panel Superior */}
         <div className="exam-top-panel">
-          
-          {/* Columna Izquierda: Cuerpo */}
-          <div className="exam-body-col">
-            {/* Vista Frontal */}
-            <BodySVG highlightedParts={highlightedParts} onClick={handlePartClick} isBackView={false} />
-            {/* Vista Trasera */}
-            <BodySVG highlightedParts={highlightedParts} onClick={handlePartClick} isBackView={true} />
+          <div className="exam-body-col" style={{ display: 'flex', gap: '20px' }}>
+            <div style={{ width: '48%' }}>
+              <BodyFront highlightedParts={highlightedParts} onClick={handlePartClick} />
+            </div>
+            <div style={{ width: '48%' }}>
+              <BodyBack highlightedParts={highlightedParts} onClick={handlePartClick} />
+            </div>
           </div>
 
-          {/* Columna Derecha: Opciones */}
           <div className="exam-options-col">
-            {/* Tipo */}
-            <div>
+             <div>
               <span className="exam-subtitle">{t('atencionMedica.examenFisico.tipo')}</span>
               <div className="options-row">
                 <CheckboxItem labelKey="atencionMedica.examenFisico.linfedemaPrimario" />
@@ -254,7 +216,6 @@ function ExamenFisicoMedica() {
               </div>
             </div>
 
-            {/* Ubicación */}
             <div>
               <span className="exam-subtitle">{t('atencionMedica.examenFisico.ubicacion')}</span>
               <div className="options-row">
@@ -268,7 +229,6 @@ function ExamenFisicoMedica() {
               </div>
             </div>
 
-            {/* Gravedad */}
             <div>
               <span className="exam-subtitle">{t('atencionMedica.examenFisico.gravedad')}</span>
               <div className="options-row" style={{flexDirection: 'column', gap: '5px'}}>
@@ -281,7 +241,6 @@ function ExamenFisicoMedica() {
               </div>
             </div>
 
-            {/* Dificultades */}
             <div>
               <span className="exam-subtitle">{t('atencionMedica.examenFisico.dificultades')}</span>
               <div className="options-row">
@@ -292,55 +251,30 @@ function ExamenFisicoMedica() {
               </div>
             </div>
 
-            {/* Botón Modal */}
             <div className="oncology-btn-wrapper">
               <button className="oncology-btn" onClick={() => setShowModal(true)}>
                 {t('atencionMedica.examenFisico.evaluacionBtn')}
               </button>
             </div>
-
           </div>
         </div>
 
-        {/* Panel Inferior: Texto */}
         <div className="exam-bottom-panel">
-            <span className="exam-subtitle">
-                {t('atencionMedica.examenFisico.textoLabel')}: {selectedPartNames}
-            </span>
-            
-            {/* Si hay partes seleccionadas, se habilita el textarea */}
-            {highlightedParts.length > 0 ? (
-                <textarea 
-                    value={notes} // Usa el estado local 'notes'
-                    onChange={handleAnnotationChange}
-                    placeholder={placeholderText}
-                />
-            ) : (
-                <div style={{
-                    width: '100%', 
-                    height: '150px', 
-                    border: '1px dashed #ccc', 
-                    borderRadius: '5px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    color: '#999',
-                    fontStyle: 'italic'
-                }}>
-                    {t('atencionTerapeutica.nav.seleccionarParte')}
-                </div>
-            )}
+            <span className="exam-subtitle">{t('atencionMedica.examenFisico.textoLabel')}: {selectedPartNames}</span>
+            <textarea 
+                value={notes} 
+                onChange={handleAnnotationChange}
+                placeholder={placeholderText}
+                disabled={highlightedParts.length === 0}
+            />
         </div>
-
       </div>
 
-      {/* Modal */}
       {showModal && (
         <div className="modal-overlay">
            <OncologicalModalContent onClose={() => setShowModal(false)} />
         </div>
       )}
-
     </div>
   );
 }
